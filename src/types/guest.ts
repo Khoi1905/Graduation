@@ -10,7 +10,10 @@ export type CreatureType =
   | "pufferfish"   // cá nóc
   | "whale"        // cá voi
   | "shrimp"       // tôm
-  | "ray";         // cá đuối
+  | "ray"          // cá đuối
+  | "shark"        // cá mập
+  | "squid"        // mực
+  | "angelfish";   // cá thiên thần
 
 export interface Guest {
   key: string;
@@ -36,6 +39,9 @@ export const CREATURE_EMOJI: Record<CreatureType, string> = {
   whale: "🐋",
   shrimp: "🦐",
   ray: "🦈",
+  shark: "🦈",
+  squid: "🦑",
+  angelfish: "🐠",
 };
 
 export const CREATURE_NAME_VI: Record<CreatureType, string> = {
@@ -51,4 +57,7 @@ export const CREATURE_NAME_VI: Record<CreatureType, string> = {
   whale: "Cá voi",
   shrimp: "Tôm",
   ray: "Cá đuối",
+  shark: "Cá mập",
+  squid: "Mực",
+  angelfish: "Cá thiên thần",
 };

@@ -7,7 +7,7 @@ import { CreatureSVG } from "@/components/svg/SeaCreatures";
 type CreatureMotion = "glide" | "paddle" | "pulse" | "crawl" | "hover" | "sweep";
 
 interface CreatureSpriteMeta {
-  src: string;
+  src: string | null;
   frames: 4;
   frameDuration: number;
   motion: CreatureMotion;
@@ -29,6 +29,9 @@ export const CREATURE_SPRITES = {
   whale: { src: `${creaturePath}/whale-sheet.png`, frames: 4, frameDuration: 1.55, motion: "sweep", scale: 1.34 },
   shrimp: { src: `${creaturePath}/shrimp-sheet.png`, frames: 4, frameDuration: 0.9, motion: "glide", scale: 1.04 },
   ray: { src: `${creaturePath}/ray-sheet.png`, frames: 4, frameDuration: 1.45, motion: "sweep", scale: 1.32 },
+  shark: { src: `${creaturePath}/shark-sheet.png`, frames: 4, frameDuration: 1.18, motion: "sweep", scale: 1.28 },
+  squid: { src: `${creaturePath}/squid-sheet.png`, frames: 4, frameDuration: 1.35, motion: "hover", scale: 1.12 },
+  angelfish: { src: `${creaturePath}/angelfish-sheet.png`, frames: 4, frameDuration: 1.05, motion: "glide", scale: 1.04 },
 } satisfies Record<CreatureType, CreatureSpriteMeta>;
 
 export function getCreatureMotion(creature: CreatureType) {
@@ -54,16 +57,18 @@ export default function CreatureSprite({
 }: CreatureSpriteProps) {
   const meta = CREATURE_SPRITES[creature];
   const displaySize = Math.round(size * meta.scale);
+  const hasSprite = Boolean(meta.src);
   const style = {
     "--creature-size": `${displaySize}px`,
     "--creature-frame-duration": `${meta.frameDuration}s`,
-    backgroundImage: `url(${meta.src})`,
+    ...(meta.src ? { backgroundImage: `url(${meta.src})` } : {}),
   } as CSSProperties;
 
   return (
     <span
       className={[
         "creature-sprite-shell",
+        hasSprite ? "has-sprite" : "is-vector-only",
         `creature-sprite-motion-${meta.motion}`,
         `creature-sprite-${creature}`,
         facing === "left" ? "is-facing-left" : "is-facing-right",

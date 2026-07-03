@@ -49,7 +49,7 @@ export default function DownloadCard({ guest }: Props) {
             </h2>
             <div className="text-2xl space-y-2 mb-10 opacity-90">
               <p>Chủ nhật, 05/07/2026</p>
-              <p>14:00 chiều</p>
+              <p>14:30 chiều</p>
             </div>
             <div className="text-xl opacity-80 space-y-1">
               <p>Hội trường Nguyễn Văn Đạo</p>

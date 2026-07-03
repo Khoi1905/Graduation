@@ -5,16 +5,304 @@
     "msg": null,
     "music": null,
     "creature": "clownfish",
-    "creatureMsg": "Với mình, bạn giống một chú cá hề — luôn mang lại tiếng cười cho mọi người xung quanh.",
+    "creatureMsg": "Với mình, bạn giống một chú cá hề - luôn mang lại tiếng cười cho mọi người xung quanh.",
     "avatar": null
   },
-  "khánh": {
-    "display": "Bùi Khánh",
+  "Khôi Đăng": {
+    "display": "Khôi Đăng",
     "pronoun": "bạn",
-    "msg": "test lần 1",
+    "msg": null,
+    "music": null,
+    "creature": "clownfish",
+    "creatureMsg": "Với mình, bạn giống một chú cá hề - luôn mang lại tiếng cười cho mọi người xung quanh.",
+    "avatar": null
+  },
+  "hamy": {
+    "display": "Hamy",
+    "pronoun": "bạn",
+    "msg": "Có những người bước vào đại học cùng anh từ rất sớm, rồi để lại trong ký ức một màu rất riêng. Hamy là một phần như thế, kể về em thì dùng nhiều tính từ, xinh đẹp, giỏi giang, tình cảm, và cũng chắc chắn là người khiến anh nhớ về nhiều nhất những năm tháng này.\n\nEm là người nghĩ nhiều và đôi khi tự nghiêm khắc với bản thân hơn mức cần thiết. Nhưng nếu nhìn từ phía anh, trước giờ luôn như vậy, em có một thứ ánh sáng rất dịu: biết quan tâm, biết cảm nhận, biết cười, biết khiến người khác tạm quên đi lo âu của họ. Cảm ơn em vì đã đi cùng anh qua một đoạn đường dài như vậy.\n\nHẹn gặp em hôm tốt nghiệp nhé",   
+    "music": null,
+    "creature": "jellyfish",
+    "creatureMsg": "Nếu chọn, anh thấy em giống một chú sứa - mềm mại, nhiều cảm xúc, nhưng luôn có ánh sáng riêng khi trôi giữa đại dương.",
+    "avatar": null
+  },
+  "duc-anh": {
+    "display": "Đức Anh",
+    "pronoun": "bạn",
+    "msg": "Nhắc đến đại học của mình mà không nhắc đến Đức Anh thì chắc chắn là thiếu. Từ năm nhất, với sự kiện đầu tiên mình được tham gia là Mùa Đông Ấm, từ một người lead sự kiện và một người lead hậu cần, rồi sau đó thành một team memories chơi với nhau đến tận bây giờ, thực sự phải nói là mình rất bất ngờ vì chơi với nhau lâu vậy kể cả khi bọn mình không còn hoạt động ở clb.\n\nMình quý ở Đức Anh sự thực tế, giỏi giang và cách biết suy nghĩ cho việc chung. Mình không nói ra, nhưng mình thật sự học được rất nhiều từ Đức Anh cách nhìn vấn đề thẳng hơn, rõ hơn, và bớt bay đi quá xa, đồng thời cũng rất ngưỡng mộ cách Đức Anh focus vào mục tiêu của bản thân. Cảm ơn Đức Anh vì đã ở đó trong rất nhiều giai đoạn quan trọng của thời đại học này.\n\nHôm đó không đi Vanh nó xiên cho đấy",     
+    "music": null,
+    "creature": "turtle",
+    "creatureMsg": "Nếu chọn, tớ thấy Đức Anh giống một chú rùa biển - điềm tĩnh, chắc chắn, và luôn biết mình đang bơi về đâu.",
+    "avatar": null
+  },
+  "van-anh": {
+    "display": "Vân Anh",
+    "pronoun": "bạn",
+    "msg": "Từ Mùa Đông Ấm năm nhất đến tận bây giờ, Vân Anh luôn là một phần rất đặc biệt trong thời gian đại học của Khôi. Một người vô tư, hồn nhiên, tốt bụng level max, rồi dần dần trở thành một mảnh không thể thiếu trong team mà mình vẫn luôn thấy rất may mắn vì có (Đức Anh chắc cũng thấy may mắn đấy).\n\nỞ Vân Anh có một kiểu năng lượng rất tự nhiên: không cần cố làm gì quá lớn, chỉ cần xuất hiện thôi là không khí đã nhẹ đi nhiều, số người quý Vân Anh thì phải xếp về tận Vĩnh Phúc. Cảm ơn Vân Anh vì đã cùng mình đi qua rất nhiều ngày vui, nhiều chuyện lộn xộn, nhiều lúc trưởng thành mà chính mình cũng không nhận ra.\n\nChúc Vân Anh tốt nghiệp thuận lợi, hẹn Vân Anh ngày hôm đó nhé", 
+    "music": null,
+    "creature": "clownfish",
+    "creatureMsg": "Nếu chọn, Khôi thấy Vanh giống một chú cá hề - không phải hề đâu mà là sự vô tư, sáng màu, và luôn làm đại dương quanh mình vui hơn.",
+    "avatar": null
+  },
+  "lam": {
+    "display": "Lâm",
+    "pronoun": "bạn",
+    "msg": "Lâm thì rất là Lâm rồi, luôn là một trong những người khiến mình thật sự nể trong quãng đại học này. Lâm giỏi, có cái tôi rất rõ, có lòng tự tôn cao, và vì thế nên mỗi lần nhìn cách bạn làm việc hay đối diện với vấn đề, mình đều thấy ở đó một nguồn năng lượng rất mạnh.\n\nAnh em mình có nhiều chuyện để nói, có thể với bạn là chuyện bình thường, nhưng với mình thì nó rất đáng nhớ. Lâm nên học cách share nhiều hơn, bớt giấu, thế mới nhanh có ghệ. Tất nhiên mình cũng trân trọng mối quan hệ này, dù mỗi người đều có nhịp sống và những ưu tiên riêng. Mình sẽ cố gắng bắt kịp Lâm thôi, xong rồi còn kèo đi 7749 địa điểm khác nhau nữa đờ cờ mờ. Cảm ơn Lâm vì đã là một người bạn trong những năm tháng này.\n\nHẹn Lâm hôm đó!", 
+    "music": null,
+    "creature": "shark",
+    "creatureMsg": "Để mà nói, Lâm giống một chú cá mập - mạnh mẽ, tự tôn, và luôn có khí chất rất riêng của bản thân giữa biển cả bao la này.",
+    "avatar": null
+  },
+  "hai-pip": {
+    "display": "Hải píp",
+    "pronoun": "bạn",
+    "msg": "Hải píp là kiểu người xuất hiện ở đâu là không khí ở đó tự nhiên có màu xã hội hơn hẳn =))). Hải ngầu, đz, dễ chơi, tốt tính, biết hòa vào tập thể, và chắc chắn là một trong những người có khả năng làm cuộc vui kéo dài hơn dự kiến.\n\nMình quý ở bạn cái chất phóng khoáng và sự thoải mái trong cách đối xử với mọi người. Đại học không chỉ có những deadline hay sự kiện, mà còn có cả những buổi ngồi với nhau, nói đủ thứ chuyện, rồi thấy mình vẫn còn rất trẻ. Cảm ơn Hải vì đã góp vào đoạn ký ức ấy một màu rất riêng.",
+    "music": null,
+    "creature": "octopus",
+    "creatureMsg": "Hải giống một chú bạch tuộc - linh hoạt, quảng giao, và luôn biết cách làm cuộc vui sống động hơn, ngoài ra cũng là do handle được nhiều chuyện.",
+    "avatar": null
+  },
+  "an-the": {
+    "display": "An Thế",
+    "pronoun": "bạn",
+    "msg": "An Thế thì cực ngố rồi, bắn bi a thì ngu, được cái tốt tính, và càng chơi càng thấy đáng quý. Mấy người như An không cần phải nói quá nhiều về bản thân, cách An ở cạnh người khác đã đủ để tạo cảm giác an toàn và vui vẻ.\n\nMình nhớ An qua những cuộc vui, qua sự thoải mái, qua cái chất thật thà và qua mấy cốc bia uống chưa hết. Cảm ơn An Thế vì đã là một người bạn khiến đại học của mình ít căng thẳng hơn.",
+    "music": null,
+    "creature": "pufferfish",
+    "creatureMsg": "An thì giống một chú cá nóc - nhìn thì bé mà uống thì kinh, thải độc cũng nhanh",
+    "avatar": null
+  },
+  "ha-my-c3": {
+    "display": "Hà My",
+    "pronoun": "bạn",
+    "msg": "Hà My là một trong những người bạn cấp 3 mà mình nghĩ đến là thấy rất nhiều kỷ niệm ùa về. Đã cùng đi qua những ngày mà mọi cảm xúc đều rất rõ ràng, chân thật và không pha tí buồn phiền nào. My cá tính, hài hước, tâm lý, xinh, đảm đang và luôn có một kiểu hiện diện rất mạnh trong ký ức của mình.\n\nNhìn My đi tiếp, rõ ràng hơn, mạnh hơn, mình thật sự thấy vui, nhất là sau khi đời vả vào mặt bạn toàn những chuyện không đâu, nhưng có lẽ đấy chỉ là sự thanh lọc cần thiết sau này thôi. Cảm ơn Hà My vì đã là một phần rất lớn của những năm tháng trước đây, mong sau này cũng thế, My đã đang và sẽ luôn là một người mình luôn trân trọng.\n\nHôm đấy đi staff nhé", 
+    "music": null,
+    "creature": "dolphin",
+    "creatureMsg": "Để chọn thì My giống một chú cá heo - (thông minh), thẳng thắn, giàu cảm xúc và luôn có sức hút, chắc nà cả thân thiện.",
+    "avatar": null
+  },
+  "hoang-huyen": {
+    "display": "Hoàng Huyền",
+    "pronoun": "bạn",
+    "msg": "Huyền là một trong những người hiền nhất mà mình từng chơi thân. Cùng bàn cấp 3, cùng đi qua rất nhiều ngày nhỏ nhỏ nhưng đáng nhớ, bạn luôn để lại trong mình cảm giác dịu dàng, tốt bụng, và cũng ngố vler.\n\nMình biết bạn hay nghĩ cho người khác, nhiều khi nhiều hơn cả nghĩ cho bản thân. Điều đó làm bạn rất đáng quý, nhưng mình cũng mong sau này bạn sẽ thương chính mình nhiều hơn một chút. Cảm ơn Huyền vì đã là một người bạn, mong sau này vẫn sẽ là một người bạn.\n\nHẹn Huyền cuối tuần nhé", 
+    "music": null,
+    "creature": "whale",
+    "creatureMsg": "Huyền thì giống một chú cá voi - hiền lành, bao dung, và mang trong mình một sự ấm áp rất lớn.",
+    "avatar": null
+  },
+  "tam-nhi": {
+    "display": "Tâm Nhi",
+    "pronoun": "bạn",
+    "msg": "Tâm Nhi là một người bạn cấp 3 mà dù bây giờ đang ở xa hơn một chút, mình vẫn nhớ rất rõ năng lượng của bạn. Giáng sinh, tốt bụng, lại giỏi đối đáp mỗi khi bị gài :))) bạn có kiểu sắc sảo rất tự nhiên mà không cần phải cố thể hiện.\n\nCó những mối quan hệ không còn gặp thường xuyên, nhưng mỗi lần nghĩ lại vẫn thấy vui vì đã từng có chung một đoạn thời gian. Mình mong khoảng cách không làm mất đi sự quý mến ấy. Dù biết Nhi không lên được, nhưng cũng mong nhận được lời chúc của điều tốt đẹp nhất nhé.", 
+    "music": null,
+    "creature": "ray",
+    "creatureMsg": "Nhi thì giống một chú cá đuối - nhẹ nhàng lướt qua nhưng luôn để lại một vệt rất đẹp.",
+    "avatar": null
+  },
+  "phuong-trang": {
+    "display": "Phương Trang",
+    "pronoun": "bạn",
+    "msg": "Trang là một cái tên gắn với nhiều ký ức rất riêng qua nhiều giai đoạn. Bạn thấp thấp (nếu mình không nói là bé tí hâh), xinh, (tóc thơm), tốt tính, ngố vler, và có một kiểu dễ thương mà hồi đó chắc mình đã nhớ lâu hơn mình tưởng.\n\nCó những cảm xúc đi qua rồi trở thành một phần rất nhẹ của tuổi trẻ, không cần gọi tên quá nhiều nhưng vẫn đáng trân trọng, đoạn này chắc cũng không cần lan man thì muốn nói gì cũng đã nói rồi. Mình vui vì trong những năm tháng ấy đã có bạn ở đó. Cảm ơn Trang vì đã góp mặt vào dòng thời gian của mình.\n\nCuối tuần nghen", 
     "music": null,
     "creature": "starfish",
-    "creatureMsg": "Từ vì sao? Thành vì sao!!",
+    "creatureMsg": "Mình chọn cho Trang một ngôi sao biển - nhỏ xinh, dịu dàng, và làm bừng sáng không gian xung quanh.",
+    "avatar": null
+  },
+  "khanh-linh": {
+    "display": "Khánh Linh",
+    "pronoun": "bạn",
+    "msg": "Khánh Linh trong ký ức cấp 3 của mình là một người xinh, giỏi, và luôn có một kiểu nổi bật rất tự nhiên. Sau khi lên đại học, mình không có nhiều cơ hội nói chuyện với bạn nữa, nhưng điều đó không làm những ấn tượng cũ mất đi.\n\nCó những người mình không gặp thường xuyên, nhưng khi nhìn lại vẫn thấy họ là một phần rất rõ của một giai đoạn. Mình mong bạn vẫn đang đi tốt trên con đường của mình, vẫn rực rỡ, vẫn tự tin, và vẫn giữ được những điều làm bạn đặc biệt. Không biết mục tiêu hiện tại của Linh là gì, nhưng mà cứ keep going bro.\n\nHủy đi chơi để lên dự tốt nghiệp các bạn thì cũng ok đấy haha", 
+    "music": null,
+    "creature": "angelfish",
+    "creatureMsg": "Linh giống cá thiên thần - nổi bật, xinh đẹp, và luôn có vẻ rực rỡ.",
+    "avatar": null
+  },
+  "khanh-dinh": {
+    "display": "Khanh Đinh",
+    "pronoun": "bạn",
+    "msg": "Khanh Đinh là một người bạn đại học mà mình thấy thân và rất quý. Kỷ niệm với bạn thì nhiều, nhớ như in 500k đầu tiên bị phạt trong cuộc đời clm. Bạn vô tư, tốt tính, có định hướng, và dù hiện tại có thể đang gặp một số khó khăn, mình vẫn tin ở bạn có đủ sự bền bỉ để đi tiếp.\n\nMình nghĩ ai cũng có những giai đoạn hơi chông chênh, nhất là khi đang cố tìm cách trở thành phiên bản tốt hơn của mình. Điều quan trọng là bạn vẫn còn muốn tiến lên. Cảm ơn Khanh vì đã là một người bạn dễ thương, chân thành, tiếp tục theo đuổi những gì mình muốn và cứ tỏa sáng như vậy là oke.\n\nMình out khỏi uet trước, hẹn Khanh cuối năm", 
+    "music": null,
+    "creature": "pufferfish",
+    "creatureMsg": "Để chọn thì Khanh giống một chú cá nóc - vô tư, đáng yêu, nhưng vẫn gai góc, chắc do hoa hồng thì hay có gai đấy",
+    "avatar": null
+  },
+  "pham-dung": {
+    "display": "Phạm Dung",
+    "pronoun": "chị",
+    "msg": "Chị Dung là một người mà em quen từ rất sớm, từ những năm cấp 2, rồi càng lớn lại càng thấy trân trọng sự hiện diện ấy, một số ít mqh mà em còn giữ tới giờ. Chị giỏi giang, độc lập, thân thiết với em, và đã giúp em nhiều lần theo những cách mà em thật sự nhớ, tất nhiên là có cả những lần tính dollar haha.\n\nKhông phải chị lúc nào cũng ở cạnh, nhưng mỗi khi nghĩ đến vẫn thấy yên tâm vì biết mình luôn được quan tâm, nâng đỡ và có một chỗ dựa. Em cảm ơn chị vì sự tử tế, và vì đã là một phần rất ấm trong hành trình trưởng thành của em.", 
+    "music": null,
+    "creature": "whale",
+    "creatureMsg": "Em chọn cho chị một chú cá voi - rộng lượng, vững vàng, và luôn mang lại cảm giác được che chở.",
+    "avatar": null
+  },
+  "minh-an": {
+    "display": "Minh An",
+    "pronoun": "chị",
+    "msg": "Chị An là một trong những người đầu tiên để lại cho em cảm giác được đón nhận khi mới lên đại học. Dù sau này không có quá nhiều dịp nói chuyện, em vẫn rất quý sự hiện diện ban đầu ấy, vì có những điều nhỏ ở đúng thời điểm lại trở nên rất đáng nhớ.\n\nHình ảnh chị trong em thì gắn liền với sự hồn nhiên, vui vẻ, và cả một cái cờ đỏ di động hâh. Mong chị luôn bình An, vui vẻ, và tiếp tục đi trên con đường của mình thật nhẹ nhàng.\n\nNếu sắp xếp được thời gian, thì qua chụp với em một bức ảnh nhaa", 
+    "music": null,
+    "creature": "dolphin",
+    "creatureMsg": "Chị giống một chú cá heo - thân thiện, thông minh, biết cách để làm biển rộng bớt xa.",
+    "avatar": null
+  },
+  "bui-khanh": {
+    "display": "Bùi Khánh",
+    "pronoun": "bạn",
+    "msg": "Bùi Khánh là một trong những người đi cùng mình qua nhiều lớp ký ức nhất: từ cấp 3, lên đại học, rồi còn chung trọ và chứng kiến rất nhiều phiên bản khác nhau của cả hai. Bạn thân thiết, giúp đỡ mình nhiều, giỏi, cảm xúc, và cũng là một đối thủ trực tiếp mà mình công nhận, theo cách khiến mình không thể lười đi quá lâu, hoặc là kéo cả hai thằng lười theo nhau.\n\nMình quý mối quan hệ này vì nó vừa có sự thân quen, vừa có sự cạnh tranh, vừa có những lúc thật sự kéo nhau đi tiếp, số ít mqh nào có thể giữ được lâu thế này. Có thể không phải lúc nào mình cũng nói ra, nhưng mình rất biết ơn những lần bạn ở đó, những lần bạn giúp mình, và cả những lần bạn khiến mình muốn cố hơn. Cảm ơn Khánh vì đã là một người bạn rất quan trọng trong đoạn đường này, sau giàu mình đi cưới 10 chỉ vàng.", 
+    "music": null,
+    "creature": "starfish",
+    "creatureMsg": "Khánh giống một ngôi sao biển - cảm xúc, góc cạnh, và luôn là một điểm sáng quen thuộc trong đại dương của mình.",
+    "avatar": null
+  },
+  "viet-hung": {
+    "display": "Việt Hùng",
+    "pronoun": "bạn",
+    "msg": "Việt Hùng là một người bạn đi cùng mình từ cấp 3 lên đại học, rồi còn chung trọ, nên chắc chắn không thể thiếu trong hành trình này. Bạn tốt bụng, dễ tính, hiền, cutẻ cute, và càng chơi lâu càng thấy sự ổn định của bạn đáng quý.\n\nMình nể ở bạn khả năng tập trung vào mục tiêu của mình. Có thể bạn không ồn ào, không thể hiện quá nhiều, nhưng bạn biết điều gì quan trọng với bản thân và vẫn lặng lẽ đi theo nó. Hùng là người có nếp sống giống người nhất trong cái trọ này rồi. Cảm ơn Hùng vì đã cùng mình đi qua những ngày rất đời thường nhưng rất đáng nhớ.", 
+    "music": null,
+    "creature": "turtle",
+    "creatureMsg": "Hùng giống một chú rùa biển - hiền, chắc, và luôn biết chậm rãi tiến về mục tiêu của mình.",
+    "avatar": null
+  },
+  "hai": {
+    "display": "Hải",
+    "pronoun": "em",
+    "msg": "Anh em mình biết nhau sớm nhưng quen nhau muộn. Em dễ tính, hiền, không gây cảm giác khó chịu, ngáo nữa, và chính sự thoải mái đó làm cho việc sống cùng nhau nhẹ hơn rất nhiều.\n\nAnh biết hiện tại em có thể chưa có định hướng quá rõ ràng, nhưng chuyện đó không có nghĩa là em không thể tìm được đường của mình. Nhiều khi chỉ cần đi tiếp, thử thêm, và nghiêm túc hơn từng chút một là mọi thứ sẽ rõ dần, trêu nhau là quang hợp vậy thôi chứ không nên thế mãi đâu. Cảm ơn Hải vì đã cùng ở trong một đoạn đời rất thực tế và gần gũi này.\n\nNhớ đi staff đấy", 
+    "music": null,
+    "creature": "pufferfish",
+    "creatureMsg": "Em giống một chú cá nóc - hiền hiền, im im, nhưng còn rất nhiều điều đang chờ được bung ra.",
+    "avatar": null
+  },
+  "trinh-tra": {
+    "display": "Trịnh Trà",
+    "pronoun": "bạn",
+    "msg": "Trịnh Trà là một người bạn cấp 3 mà mình từng rất thân vào năm nhất, năm hai, rồi về sau không có nhiều cơ hội để giữ nhịp như trước, nghe thì buồn thật. Nhưng điều đó không làm mình quên được cảm giác chơi với bạn rất hợp tính, rất vui, và rất dễ có những câu chuyện bật cười tự nhiên.\n\nBạn hài hước, xinh gái, cũng nhiều cảm xúc, và có mục tiêu của riêng mình. Mình mong dù sau này mỗi người có bận đến đâu, khi nhìn lại vẫn có thể thấy những ngày từng thân là thật sự đáng quý. Cảm ơn Trà vì đã là một màu rất vui trong tuổi trẻ của mình.\n\nBay từ Hạ Long lên đây là cũm iu rùi",
+    "music": null,
+    "creature": "starfish",
+    "creatureMsg": "Chúc Trà sớm từ vì sao? thành VÌ SAOOOO!",
+    "avatar": null
+  },
+  "que-anh": {
+    "display": "Quế Anh",
+    "pronoun": "bạn",
+    "msg": "Quế Anh là một người bạn cấp 3 mà mình luôn thấy dễ thương theo một cách rất duyên. Bạn nói chuyện cuốn, giỏi, có mục tiêu, và ở bạn có sự mềm mại nhưng không hề mờ nhạt.\n\nMình quý những người vừa có năng lượng dễ gần, vừa biết mình muốn gì. Điều đó khiến bạn trở thành một người rất đáng nhớ trong ký ức của mình. Cảm ơn Quế Anh vì đã xuất hiện trong những năm tháng ấy và để lại một cảm giác rất sáng, rất đẹp.\n\nNếu sắp xếp được thời gian, cuối tuần này qua chụp cái ảnh nhaa", 
+    "music": null,
+    "creature": "angelfish",
+    "creatureMsg": "Quế giống một chú cá thiên thần - duyên dáng, sáng màu, và luôn có mục tiêu riêng.",
+    "avatar": null
+  },
+  "nguyet-minh": {
+    "display": "Nguyệt Minh",
+    "pronoun": "em",
+    "msg": "Nguyệt Minh là một người anh biết từ lâu nhưng gần đây mới có cơ hội nói chuyện, nhưng lại tạo cảm giác kiểu \"à há nhỏ này nghĩ giống mình này\". Em thì thực tế, cảm xúc, giỏi, hay sai nhưng mà là sai ghính, nhiều suy nghĩ và cũng có kiểu nhìn vấn đề vừa rõ ràng vừa đủ mềm để người đối diện thấy dễ chia sẻ.\n\nAnh thích những mối quan hệ đến muộn nhưng đúng nhịp, vì đôi khi không cần quen quá lâu mới thấy quý nhau. Cảm ơn Minh vì đã xuất hiện, không chúc em một cuộc sống nhẹ nhàng, chỉ mong em chân cứng đá mềm, vượt qua khó khăn để thực hiện được hoài bão của mình, trước mắt thì qua được mùa hè này đã hâh.\n\nNếu sắp xếp được thời gian thì cuối tuần qua chơi với bọn anh nha", 
+    "music": null,
+    "creature": "whale",
+    "creatureMsg": "Để chọn thì, anh thấy em như một chú cá voi - dịu dàng, sâu sắc, mang trong mình một thế giới nội tâm rất sâu",
+    "avatar": null
+  },
+  "hue-anh": {
+    "display": "Huệ Anh",
+    "pronoun": "bạn",
+    "msg": "Huệ Anh cũng là một người em mà gần đây anh mới có cơ hội nói chuyện, nhưng càng nói càng thấy em có nhiều khía cạnh mới mẻ. Em thì xinh rồi, giỏi, cảm xúc, và có một kiểu thu hút không chỉ đến từ vẻ ngoài mà còn từ cách nghĩ, cách phản ứng với mọi thứ xung quanh, thảo nào Khánh nó bảo c3 làm bạch nguyệt quang của cả lớp hâh.\n\nAnh quý những người khiến anh có cảm giác vẫn còn nhiều điều để hiểu thêm. Chỉ cần bớt trêu bớt so sánh anh đi là được, cơ địa đã dễ khóc sẵn còn gặp người hay trêu hicc, tự ái đấy. Anh cũng nghe Khánh nói em không tham dự được vào cuối tuần này, tuy nhiên anh xin một lời chúc nha", 
+    "music": null,
+    "creature": "jellyfish",
+    "creatureMsg": "Anh chọn cho em một chú sứa - đẹp, cảm xúc, và luôn phát sáng theo cách rất riêng.",
+    "avatar": null
+  },
+  "viet-ninh": {
+    "display": "Việt Ninh",
+    "pronoun": "bạn",
+    "msg": "Việt Ninh là một người bạn cấp 3 mà mình thấy rất đáng quý. Bạn giỏi, nhìn cũng đz, thẳng tính, thật thà, có một tình yêu lâu bền (cưới muộn tí chứ mình chưa có tiền mừng), thêm cái nấu ăn ngon - từng ấy thôi đã đủ tạo thành một hình ảnh rất rõ trong ký ức của mình.\n\nMình quý ở bạn sự thật thà và cái chất không vòng vo. Có những người chơi cùng khiến mình thấy mọi thứ rõ ràng hơn, ít phải đoán hơn, và bạn là một người như vậy. Cảm ơn Ninh vì đã là một phần của những năm tháng cấp 3, cũng rấc vui vì zai sắp xếp lên chơi được và cuối tuần nì kkk", 
+    "music": null,
+    "creature": "crab",
+    "creatureMsg": "Ninh thì giống một chú cua - chắc chắn, thẳng thắn, và luôn có phong cách, ngoài ra thì cũng ngang như cua.",
+    "avatar": null
+  },
+  "tung-anh": {
+    "display": "Tùng Anh",
+    "pronoun": "bạn",
+    "msg": "Tùng Anh là một người bạn cấp 3 mà mình luôn nhìn bằng sự nể phục. Bạn giỏi, chăm chỉ, chất phác, thật thà, và có một kiểu nỗ lực rất bền bỉ mà không cần phải nói quá nhiều.\n\nMình nghĩ sự nỗ lực âm thầm đôi khi còn đáng quý hơn những điều rực rỡ bên ngoài. Nhìn cách bạn cố gắng, mình thấy có nhiều thứ đáng để học. Có thể còn nhiều khó khăn, nhưng Tùng Anh luôn tạo cảm giác kiểu everything will be ok. Cảm ơn Tùng Anh vì đã là một người bạn chân thành, nghiêm túc, và luôn cho mình cảm giác rằng chăm chỉ thật sự có giá trị. Cuối tuần trốn ra chơi nhé", 
+    "music": null,
+    "creature": "seahorse",
+    "creatureMsg": "Tùng Anh giống một con cá ngựa - bền bỉ, thật thà, và luôn tiến lên bằng sức của mình.",
+    "avatar": null
+  },
+  "minh-thanh": {
+    "display": "Minh Thành",
+    "pronoun": "bạn",
+    "msg": "Minh Thành là một người bạn cấp 3 mà mình thật sự thấy có nhiều điều cần noi theo. Bạn giỏi, hài hước, học thì tày rồi, và luôn tạo cảm giác rằng phía sau sự vui vẻ kia là một năng lực rất đáng nể.\n\nMình thích những người vừa có thể làm người khác cười, vừa khiến người khác phải nghiêm túc công nhận. Bạn là một người như thế. Chắc nghe xong Thành sẽ cười khẩy xong bảo văn AI, nhưng đây viết bằng tay đấy bố. Cảm ơn Thành vì đã là một phần rất sáng của ký ức cấp 3, cuối tuần trốn trại đi chơi nhé.", 
+    "music": null,
+    "creature": "shark",
+    "creatureMsg": "Thành giống một chú cá mập - sắc bén, mạnh mẽ, và luôn khiến người khác phải nể.",
+    "avatar": null
+  },
+  "cong-ninh": {
+    "display": "Công Ninh",
+    "pronoun": "bạn",
+    "msg": "Công Ninh là một người bạn mà khá nhiều chuyện gắn cùng hình ảnh của mình, tiếc là giờ đang du học xa, lâu rồi chưa có dịp gặp lại. Có những người đi xa khiến khoảng cách địa lý lớn hơn, nhưng sự quý mến trong ký ức thì vẫn còn nguyên ở đó.\n\nMình mong bạn ở nơi xa vẫn ổn, vẫn giữ được sự giỏi giang và bản lĩnh của mình. Hẹn một ngày bạn về, mà hình như là mùng 10 nhể, anh em sẽ lại có dịp ngồi nghe chuyện sau bao lâu không gặp, miễn là BẠN KHÔNG ĐI CHƠI VỚI GÁI NỮA. Cảm ơn Ninh vì đã là một phần đáng nhớ của những năm cấp 3 và mong ngày gặp lại sẽ thật vui.", 
+    "music": null,
+    "creature": "whale",
+    "creatureMsg": "Bạn giống một chú cá voi - đi xa, đi rộng, nhưng vẫn mang theo một dấu ấn rất lớn.",
+    "avatar": null
+  },
+  "quang-minh": {
+    "display": "Quang Minh",
+    "pronoun": "bạn",
+    "msg": "Quang Minh là một người bạn đại học giỏi, dân Thanh Hóa, sống sâu sắc, cũng ưng đấy. Bạn là đặc trưng của câu \"Ghét me first, love me later\".\n\nMình quý những người đi xa rồi quay lại với nhiều câu chuyện hơn, nhiều góc nhìn hơn. Bạn làm mình thấy mỗi hành trình đều có thể khiến con người rộng ra một chút. Văn vở vậy thôi chứ đã gặp chó đâu. Chuyện anh em mình thì chả diễn thành lời được, thôi thì nào gặp ôm nhau cái.\n\nMình cút khỏi UET trước, hẹn bạn cuối tuần này và nửa năm sau", 
+    "music": null,
+    "creature": "squid",
+    "creatureMsg": "Minh thì tặng cho một chú mực - không phải Minh giống mực hay gì đâu mà là thèm mực nướng quá đi uống bia đi.",
+    "avatar": null
+  },
+  "thu-ha": {
+    "display": "Thu Hà",
+    "pronoun": "bạn",
+    "msg": "Hà là một người bạn cấp 3 mà mình nhớ bằng rất nhiều ấn tượng tốt, xinh gái, giỏi (chắc là bây giờ chứ cấp 3 đần ác), hài hước, tốt tính, và luôn có một kiểu năng lượng khiến người xung quanh thấy dễ vui hơn. Có những câu chuyện cũ gắn với bạn, nhưng sau cùng điều mình giữ lại vẫn là sự quý mến.\n\nMình nghĩ tuổi trẻ đẹp ở chỗ có rất nhiều mối liên kết, rất nhiều ký ức đan vào nhau, và bạn là một phần trong đó, chỉ cần bớt chảnh chọe rep ib nhanh tí nào ưng.\n\nCuối tuần sang chơi với mình và nyc Hà nhaa.", 
+    "music": null,
+    "creature": "clownfish",
+    "creatureMsg": "Hà giống một chú cá hề - xinh xắn, hài hước, mặt khác trùng tên nyc mình nên mình thấy hề :D",
+    "avatar": null
+  },
+  "pham-hue": {
+    "display": "Phạm Huệ",
+    "pronoun": "bạn",
+    "msg": "Phạm Huệ là một người bạn đại học mà mình thật sự thấy rất đáng quý. Bạn xinh, siêu giỏi, siêu tốt, siêu tài, và có một kiểu tử tế khiến người khác muốn giữ mối quan hệ này lâu hơn.\n\nMình nghĩ không phải ai trong đại học cũng để lại cảm giác rõ ràng như vậy. Mong paper đầu tiên của mình và thứ n của bạn sẽ được acp nha, mong cuối tuần kịp xong dl huhuhuhh. Cảm ơn Huệ vì đã là một người bạn khiến mình thấy cần trân trọng.\n\nCuối tuần sang chơi với mình nhéeeee", 
+    "music": null,
+    "creature": "angelfish",
+    "creatureMsg": "Bạn giống một chú cá thiên thần - đẹp, giỏi, tốt bụng, và luôn tỏa sáng.",
+    "avatar": null
+  },
+  "ha-ngo": {
+    "display": "Hà Ngô",
+    "pronoun": "bạn",
+    "msg": "Hà Ngô là một trong số ít những người bạn đại học mà mình thấy có thể thân thiết. Hà Ngô thì xinh rồi, phong cách, định hướng rõ ràng. Nhưng ở bạn cũng có nhiều cảm xúc, và đôi khi vì tình cảm mà hơi ngố, thật đấy.\n\nMình quý sự pha trộn đó: đủ thực tế để biết mình cần gì, nhưng cũng đủ cảm xúc để những câu chuyện quanh bạn không trở nên khô khan. Dù thỉnh thoảng cơ hơi vô tâm ib méo rep gọi điện méo nghe. Cảm ơn Hà vì đã là một người bạn có nhiều lớp, nhiều màu, mong anh em có nhiều dịp đồng hành hơn.\n\nChúc mừng Hà tốt nghiệp chưa chính thức, cuối tuần sang chơi với bạn nhá, cuối năm bạn sang chơi sau hâh", 
+    "music": null,
+    "creature": "jellyfish",
+    "creatureMsg": "Hngo giống một chú sứa - đẹp, nhạy cảm, và luôn có những lớp cảm xúc của mình.",
+    "avatar": null
+  },
+  "gia-huy": {
+    "display": "Gia Huy",
+    "pronoun": "bạn",
+    "msg": "Huy là một người bạn sống tình cảm, giỏi, và luôn tạo cảm giác có thể ngồi lại với nhau để nói những chuyện thật hơn một chút. Có những mối quan hệ không cần lúc nào cũng quá nhiều lời, chỉ cần hẹn một kèo là thấy còn quý nhau.\n\nMình vẫn nhớ cái hẹn uống rượu, không chỉ vì rượu, mà vì những cuộc nói chuyện sau đó chắc sẽ có nhiều điều đáng nghe. Cảm ơn Huy vì đã là một người bạn có chiều sâu, có tình cảm.\n\nCuối tuần sắp xếp được lên chơi nha zaii, cho bạn gặp Hà My và Khánh Linh hâh.",
+    "music": null,
+    "creature": "octopus",
+    "creatureMsg": "Bạn giống một chú bạch tuộc - thông minh, tình cảm, và có nhiều câu chuyện để kể khi ngồi lại.",
+    "avatar": null
+  },
+  "vu-dai-minh": {
+    "display": "Vũ Đại Minh",
+    "pronoun": "anh",
+    "msg": "Anh Minh là một người anh em quen khi lên đại học và để lại trong em ấn tượng về sự tình cảm. Có những người không nhất thiết phải xuất hiện quá nhiều, nhưng cách họ đối xử với người khác đủ để mình nhớ lâu.\n\nEm quý ở anh sự ấm và sự thật trong cảm xúc. Trong một giai đoạn mà ai cũng bận đi tìm đường của mình, những người sống tình cảm luôn khiến hành trình ấy bớt khô hơn. Em cũng nhớ như in nhận xét của anh hồi năm nhất, là em sẽ được nhiều người giúp đỡ, và đúng vậy thật haah mặc dù còn nhiều khó khăn quá hiccc. Cảm ơn anh vì đã là một người anh đáng quý trong quãng đại học của em.\n\nCuối tuần nếu anh sắp xếp được thì qua chơi với bọn em nhé ạa", 
+    "music": null,
+    "creature": "whale",
+    "creatureMsg": "Anh giống một chú cá voi - trầm, ấm, và mang lại cảm giác tình cảm rất rộng.",
+    "avatar": null
+  },
+  "nguyen-van-hung": {
+    "display": "Nguyễn Văn Hưng",
+    "pronoun": "anh",
+    "msg": "Anh Hưng là một người anh mà em thật sự nể: siêu giỏi, sống rất tình cảm, thực tế, có định hướng, và luôn tạo cảm giác của một người mà khi xuất hiện thì mọi việc sẽ ổn thôi. Ở anh có sự cân bằng giữa lý trí và tình cảm mà em thấy rất đáng học.\n\nEm cũng quý cách anh hiện diện trong những mối quan hệ quanh mình, vừa chắc chắn, vừa biết quan tâm. Dù rằng đôi lúc nói chuyện với anh suy nghĩ em không theo kịp haha. Cảm ơn anh vì đã là một người anh giỏi giang, ấm áp, và để lại cho em nhiều điều đáng suy nghĩ về cách một người trưởng thành có thể sống tử tế và rõ ràng.\n\nCuối tuần cùng Khanh qua chơi nha anh", 
+    "music": null,
+    "creature": "shark",
+    "creatureMsg": "Anh giống một chú cá mập - bản lĩnh, rõ hướng, nhưng vẫn có một phần rất tình cảm bên trong.",
     "avatar": null
   }
 }

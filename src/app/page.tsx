@@ -39,6 +39,9 @@ const SURFACE_CREATURE_SPRITE_SOURCES = [
   "/art/dive/creatures/whale-sheet.png",
   "/art/dive/creatures/shrimp-sheet.png",
   "/art/dive/creatures/ray-sheet.png",
+  "/art/dive/creatures/shark-sheet.png",
+  "/art/dive/creatures/squid-sheet.png",
+  "/art/dive/creatures/angelfish-sheet.png",
 ] as const;
 
 type TransitionDirection = "next" | "prev";

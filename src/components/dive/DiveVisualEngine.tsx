@@ -624,7 +624,8 @@ export default function DiveVisualEngine({ sceneIndex, sceneProgress, isTransiti
         surfaceCreaturePreloadTimer = 0;
         for (let count = 0; count < batchSize && surfaceCreaturePreloadIndex < surfaceCreatures.length; count += 1) {
           const creature = surfaceCreatures[surfaceCreaturePreloadIndex];
-          ensureImage(CREATURE_SPRITES[creature.creature].src);
+          const src = CREATURE_SPRITES[creature.creature].src;
+          if (src) ensureImage(src);
           surfaceCreaturePreloadIndex += 1;
         }
         if (surfaceCreaturePreloadIndex < surfaceCreatures.length) {
@@ -708,6 +709,7 @@ export default function DiveVisualEngine({ sceneIndex, sceneProgress, isTransiti
 
     const drawSurfaceCreature = (item: CanvasCreature, time: number) => {
       const meta = CREATURE_SPRITES[item.creature];
+      if (!meta.src) return;
       const image = ensureImage(meta.src);
       if (!imageReady(image)) return;
 

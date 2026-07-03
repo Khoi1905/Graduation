@@ -3129,6 +3129,22 @@ select {
   display: none;
 }
 
+.creature-sprite-shell.is-vector-only {
+  background-image: none;
+}
+
+.creature-sprite-shell.is-vector-only .creature-sprite-frame {
+  display: none;
+}
+
+.creature-sprite-shell.is-vector-only .creature-sprite-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .creature-sprite-highlight {
   position: absolute;
   inset: 18% 12% 42% 10%;

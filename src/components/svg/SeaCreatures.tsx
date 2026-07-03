@@ -422,6 +422,100 @@ export function GenericFishSVG({
   );
 }
 
+export function SharkSVG({ size = 60, className = "" }: SVGCreatureProps) {
+  const id = useId();
+  return (
+    <div className={objectClass(className)} style={{ width: size * 1.18, height: size * 0.58 }}>
+      <svg viewBox="0 0 118 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id={`sk-body-${id}`} x1="18" y1="8" x2="92" y2="48">
+            <stop offset="0%" stopColor="#9fb7c5" />
+            <stop offset="58%" stopColor="#526d7d" />
+            <stop offset="100%" stopColor="#243744" />
+          </linearGradient>
+          <SoftShadow id={`sk-shadow-${id}`} />
+        </defs>
+        <path d="M18 30 Q8 19 3 10 Q20 14 31 26" fill="#385061" opacity="0.92" />
+        <path d="M18 30 Q7 42 4 51 Q20 47 31 35" fill="#304655" opacity="0.78" />
+        <path d="M52 14 Q58 1 67 15" fill="#5f7888" />
+        <path d="M52 39 Q41 52 30 47 Q39 38 54 34" fill="#314958" opacity="0.58" />
+        <path d="M14 31 Q49 2 93 22 Q106 27 115 29 Q105 33 92 37 Q49 56 14 31Z" fill={`url(#sk-body-${id})`} filter={`url(#sk-shadow-${id})`} />
+        <path d="M35 38 Q59 49 93 34 Q72 49 40 45" fill="#eff8fb" opacity="0.28" />
+        <ellipse cx="64" cy="21" rx="20" ry="7" fill="#ffffff" opacity="0.14" />
+        <circle cx="92" cy="25" r="3.6" fill="#fffaf0" />
+        <circle cx="93" cy="24.5" r="1.9" fill="#0c1720" />
+        <path d="M99 31 Q105 32 111 30" stroke="#13242e" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+        <path d="M101 32 l2 4 l2 -4 l2 4" stroke="#f8fbfb" strokeWidth="1" opacity="0.72" strokeLinecap="round" />
+      </svg>
+    </div>
+  );
+}
+
+export function SquidSVG({ size = 60, className = "" }: SVGCreatureProps) {
+  const id = useId();
+  return (
+    <div className={objectClass(className)} style={{ width: size * 0.82, height: size * 1.08 }}>
+      <svg viewBox="0 0 74 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id={`sq-body-${id}`} cx="38%" cy="22%" r="78%">
+            <stop offset="0%" stopColor="#ffd3c8" />
+            <stop offset="56%" stopColor="#d9798f" />
+            <stop offset="100%" stopColor="#7c3b79" />
+          </radialGradient>
+          <SoftShadow id={`sq-shadow-${id}`} />
+        </defs>
+        <path d="M37 5 Q58 22 54 48 Q47 64 37 68 Q27 64 20 48 Q16 22 37 5Z" fill={`url(#sq-body-${id})`} filter={`url(#sq-shadow-${id})`} />
+        <path d="M23 24 Q12 21 8 11 Q21 12 31 21" fill="#b85d88" opacity="0.64" />
+        <path d="M51 24 Q62 21 66 11 Q53 12 43 21" fill="#b85d88" opacity="0.64" />
+        <ellipse cx="34" cy="29" rx="10" ry="16" fill="#ffffff" opacity="0.16" />
+        <circle cx="30" cy="43" r="4" fill="#fff9ff" />
+        <circle cx="44" cy="43" r="4" fill="#fff9ff" />
+        <circle cx="31" cy="42.4" r="2.1" fill="#241334" />
+        <circle cx="45" cy="42.4" r="2.1" fill="#241334" />
+        {[22, 30, 38, 46, 54].map((x, i) => (
+          <path
+            key={x}
+            d={`M${x} 61 Q${x - 8 + i * 2} 74 ${x - 1} 86`}
+            stroke={i % 2 ? "#d989a3" : "#a85892"}
+            strokeWidth={i === 2 ? 4 : 3}
+            strokeLinecap="round"
+            fill="none"
+            opacity={0.68}
+          />
+        ))}
+      </svg>
+    </div>
+  );
+}
+
+export function AngelfishSVG({ size = 60, className = "" }: SVGCreatureProps) {
+  const id = useId();
+  return (
+    <div className={objectClass(className)} style={{ width: size, height: size * 0.9 }}>
+      <svg viewBox="0 0 86 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id={`af-body-${id}`} x1="18" y1="8" x2="62" y2="62">
+            <stop offset="0%" stopColor="#fff1a0" />
+            <stop offset="48%" stopColor="#f5a84c" />
+            <stop offset="100%" stopColor="#cf5b6f" />
+          </linearGradient>
+          <SoftShadow id={`af-shadow-${id}`} />
+        </defs>
+        <path d="M18 39 L4 25 L7 39 L4 53 Z" fill="#d46478" opacity="0.86" />
+        <path d="M38 12 Q50 0 58 15 Q48 18 40 24" fill="#ffd86d" opacity="0.84" />
+        <path d="M36 54 Q42 72 26 76 Q30 61 35 48" fill="#d95d73" opacity="0.72" />
+        <path d="M18 39 Q36 11 62 19 Q78 29 80 39 Q78 49 62 59 Q36 67 18 39Z" fill={`url(#af-body-${id})`} filter={`url(#af-shadow-${id})`} />
+        <path d="M33 20 Q25 39 33 58" stroke="#fff7cb" strokeWidth="4.5" opacity="0.6" strokeLinecap="round" />
+        <path d="M47 18 Q40 39 48 60" stroke="#8f3551" strokeWidth="3" opacity="0.26" strokeLinecap="round" />
+        <ellipse cx="55" cy="30" rx="13" ry="6" fill="#ffffff" opacity="0.18" />
+        <circle cx="64" cy="34" r="4.4" fill="#fffaf0" />
+        <circle cx="65" cy="33.3" r="2.4" fill="#142033" />
+        <path d="M70 42 Q75 44 70 47" stroke="#8f3551" strokeWidth="1.4" fill="none" strokeLinecap="round" />
+      </svg>
+    </div>
+  );
+}
+
 export function CreatureSVG({ creature, size = 60, className = "" }: { creature: CreatureType; size?: number; className?: string }) {
   switch (creature) {
     case "clownfish":
@@ -448,5 +542,11 @@ export function CreatureSVG({ creature, size = 60, className = "" }: { creature:
       return <ShrimpSVG size={size} className={className} />;
     case "ray":
       return <RaySVG size={size} className={className} />;
+    case "shark":
+      return <SharkSVG size={size} className={className} />;
+    case "squid":
+      return <SquidSVG size={size} className={className} />;
+    case "angelfish":
+      return <AngelfishSVG size={size} className={className} />;
   }
 }
