@@ -304,5 +304,23 @@
     "creature": "shark",
     "creatureMsg": "Anh giống một chú cá mập - bản lĩnh, rõ hướng, nhưng vẫn có một phần rất tình cảm bên trong.",
     "avatar": null
+  },
+  "tan-duc": {
+    "display": "Tân Đức",
+    "pronoun": "anh",
+    "msg": "Anh Tân Đức là một trong những người anh ở câu lạc bộ mà em nhớ bằng một cảm giác rất dịu. Anh không ồn ào, không cần thể hiện quá nhiều, nhưng luôn có một cách quan tâm rất riêng, đủ để người khác thấy mình được để ý và được đặt vào trong một tập thể.\n\nEm vẫn nhớ hồi mới vào CLB, khi mọi thứ còn lạ và em cũng chưa thật sự biết mình thuộc về đâu, anh đã rủ riêng em với HDD đi ăn chỉ vì sợ bọn em bị lạc lõng. Một việc nhỏ thôi nhưng với em lúc đó rất ấm, và nó làm em nhớ anh như một người anh rất tinh tế, rất biết nghĩ cho cảm giác của người khác.\n\nCảm ơn anh vì đã dịu dàng và quan tâm các em theo cách rất tự nhiên như vậy. Hẹn gặp anh hôm tốt nghiệp nhé.",
+    "music": null,
+    "creature": "turtle",
+    "creatureMsg": "Anh giống một chú rùa biển - điềm tĩnh, hiền và chậm rãi, nhưng luôn tạo cảm giác an toàn cho những người đang bơi cùng mình.",
+    "avatar": null
+  },
+  "kieu-anh": {
+    "display": "Kiều Anh",
+    "pronoun": "chị",
+    "msg": "Chị Kiều Anh là một người chị rất đặc biệt ở câu lạc bộ: xinh gái, độc lập, giỏi giang, giàu theo đúng nghĩa vừa tự chủ vừa có khí chất, nhưng điều em nhớ nhất vẫn là cách chị quan tâm các em. Ở chị có cảm giác của một người chị cả, không cần nói quá nhiều nhưng vẫn khiến mọi người thấy được che chở và được để ý.\n\nEm luôn quý cách chị sống rất rõ ràng, tự tin và có thế giới riêng, nhưng vẫn mềm ở những chỗ cần mềm. Những lần chị hỏi han, để ý hay đứng ra lo cho các em làm em thấy CLB không chỉ là nơi làm việc cùng nhau, mà còn là nơi có những người chị thật sự đáng tin.\n\nCảm ơn chị vì đã là một người chị cả xinh đẹp, độc lập và ấm áp như vậy. Hẹn gặp chị hôm tốt nghiệp nhé.",
+    "music": null,
+    "creature": "whale",
+    "creatureMsg": "Chị giống một chú cá voi - lớn lao, bình tĩnh, bao dung và luôn mang theo một cảm giác rất vững chãi giữa đại dương.",
+    "avatar": null
   }
 }
