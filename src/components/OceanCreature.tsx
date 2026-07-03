@@ -20,19 +20,51 @@ interface Props {
 
 const MESSAGE_MAX_CHARS = 90;
 
-// Các "làn" bơi trải quanh màn hình — mỗi làn có gốc trái/trên riêng để creature
-// không chồng lên nhau. roamX luôn dương (đều bơi sang phải trước) nên chỉ cần MỘT
-// keyframe lật hướng dùng chung, đảm bảo mặt luôn quay đúng chiều di chuyển.
-const LANES: Array<{ left: number; top: number }> = [
-  { left: 8, top: 16 },
-  { left: 40, top: 12 },
-  { left: 14, top: 46 },
-  { left: 46, top: 40 },
-  { left: 10, top: 68 },
-  { left: 48, top: 66 },
-  { left: 26, top: 28 },
-  { left: 34, top: 56 },
+type LaneSide = "left" | "right" | "top" | "bottom";
+
+interface CreatureLane {
+  side: LaneSide;
+  left: number;
+  top: number;
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+  x3: number;
+  y3: number;
+}
+
+// Lanes stay around the viewport edges so creatures do not pass through the event card.
+const LANES: CreatureLane[] = [
+  { side: "left", left: 7, top: 18, x1: 8, y1: -4, x2: 18, y2: 4, x3: 7, y3: 10 },
+  { side: "right", left: 93, top: 20, x1: -8, y1: -4, x2: -18, y2: 4, x3: -7, y3: 10 },
+  { side: "left", left: 10, top: 38, x1: 12, y1: -7, x2: 19, y2: 1, x3: 8, y3: 8 },
+  { side: "right", left: 90, top: 40, x1: -12, y1: -7, x2: -19, y2: 1, x3: -8, y3: 8 },
+  { side: "left", left: 7, top: 58, x1: 10, y1: -8, x2: 17, y2: 2, x3: 6, y3: 9 },
+  { side: "right", left: 93, top: 60, x1: -10, y1: -8, x2: -17, y2: 2, x3: -6, y3: 9 },
+  { side: "left", left: 13, top: 74, x1: 11, y1: -8, x2: 18, y2: -2, x3: 7, y3: 4 },
+  { side: "right", left: 87, top: 74, x1: -11, y1: -8, x2: -18, y2: -2, x3: -7, y3: 4 },
+  { side: "top", left: 20, top: 14, x1: 10, y1: 4, x2: 18, y2: 7, x3: 7, y3: 3 },
+  { side: "top", left: 80, top: 14, x1: -10, y1: 4, x2: -18, y2: 7, x3: -7, y3: 3 },
+  { side: "top", left: 30, top: 18, x1: -7, y1: 5, x2: -13, y2: 8, x3: -5, y3: 3 },
+  { side: "top", left: 70, top: 18, x1: 7, y1: 5, x2: 13, y2: 8, x3: 5, y3: 3 },
+  { side: "bottom", left: 20, top: 84, x1: 11, y1: -4, x2: 18, y2: -2, x3: 6, y3: 2 },
+  { side: "bottom", left: 80, top: 84, x1: -11, y1: -4, x2: -18, y2: -2, x3: -6, y3: 2 },
+  { side: "bottom", left: 32, top: 87, x1: -8, y1: -5, x2: -14, y2: -2, x3: -5, y3: 1 },
+  { side: "bottom", left: 68, top: 87, x1: 8, y1: -5, x2: 14, y2: -2, x3: 5, y3: 1 },
 ];
+
+const HIGHLIGHTED_LANE: CreatureLane = {
+  side: "right",
+  left: 90,
+  top: 24,
+  x1: -6,
+  y1: 5,
+  x2: -13,
+  y2: 12,
+  x3: -4,
+  y3: 18,
+};
 
 export default function OceanCreature({
   name,
@@ -50,14 +82,11 @@ export default function OceanCreature({
   const detailMessage = fullMessage ?? message;
   const isInteractive = Boolean(onSelect && hasDetail);
 
-  const lane = LANES[index % LANES.length];
-  const leftBase = isHighlighted ? 63 : lane.left;
-  const topBase = isHighlighted ? 22 : lane.top;
+  const lane = isHighlighted ? HIGHLIGHTED_LANE : LANES[index % LANES.length];
+  const leftBase = lane.left;
+  const topBase = lane.top;
 
-  // Biên độ bơi ngang (vw) + trôi dọc (vh) — biến thiên theo index cho tự nhiên.
-  const roamX = isHighlighted ? 11 : 18 + (index % 4) * 3; // 18–27vw
-  const roamYUp = isHighlighted ? -3 : -(2 + (index % 3)); // -2..-4vh
-  const roamYDown = isHighlighted ? 2 : 1 + (index % 2) * 2; // 1 hoặc 3vh
+  const reverseFacing = lane.x1 < 0;
   const swimDuration = isHighlighted ? 24 : 22 + (index % 5) * 3; // 22–34s
   const swimDelay = -((index * 3.3) % swimDuration); // desync các con
   const bobDelay = index * 0.9;
@@ -90,7 +119,7 @@ export default function OceanCreature({
           onSelect?.();
         }
       }}
-      className={`ocean-creature-3d absolute ${isInteractive ? "is-detail-enabled" : "pointer-events-none"} ${isHighlighted ? "is-highlighted" : ""}`}
+      className={`ocean-creature-3d absolute is-lane-${lane.side} ${reverseFacing ? "is-reverse-lane" : ""} ${isInteractive ? "is-detail-enabled" : "pointer-events-none"} ${isHighlighted ? "is-highlighted" : ""}`}
       style={{
         left: `${leftBase}%`,
         top: `${topBase}%`,
@@ -102,9 +131,12 @@ export default function OceanCreature({
       <div
         className="creature-swim"
         style={{
-          "--roam-x": `${roamX}vw`,
-          "--roam-y-up": `${roamYUp}vh`,
-          "--roam-y-down": `${roamYDown}vh`,
+          "--path-x-1": `${lane.x1}vw`,
+          "--path-y-1": `${lane.y1}vh`,
+          "--path-x-2": `${lane.x2}vw`,
+          "--path-y-2": `${lane.y2}vh`,
+          "--path-x-3": `${lane.x3}vw`,
+          "--path-y-3": `${lane.y3}vh`,
           "--swim-duration": `${swimDuration}s`,
           "--swim-delay": `${swimDelay}s`,
         } as CSSProperties}
@@ -143,7 +175,7 @@ export default function OceanCreature({
           </div>
 
           <span
-            className="creature-facing -mt-1"
+            className={`creature-facing -mt-1 ${reverseFacing ? "is-facing-reverse" : ""}`}
             style={{
               "--swim-duration": `${swimDuration}s`,
               "--swim-delay": `${swimDelay}s`,

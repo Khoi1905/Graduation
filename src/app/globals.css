@@ -3042,6 +3042,10 @@ select {
   will-change: transform;
 }
 
+.creature-facing.is-facing-reverse {
+  animation-name: creature-face-reverse;
+}
+
 .avatar-bubble-3d,
 .creature-label-3d {
   box-shadow:
@@ -4629,20 +4633,19 @@ select {
   70% { transform: translate3d(-1px, 4px, 0) rotate(-0.4deg); }
 }
 
-/* Bơi tuần tra: sang phải (0→47%), dừng nhẹ ở mép phải rồi bơi ngược về (50→100%).
-   ease-in-out khiến creature giảm tốc ở hai điểm quay đầu → tự nhiên. */
+/* Bơi tuần tra quanh safe-zone: nhiều waypoint giúp sinh vật lên/xuống và không cắt qua card giữa. */
 @keyframes creature-roam {
   0% {
     transform: translate3d(0, 0, 0);
   }
-  47% {
-    transform: translate3d(var(--roam-x, 20vw), var(--roam-y-up, -3vh), 0);
+  23% {
+    transform: translate3d(var(--path-x-1, 8vw), var(--path-y-1, -3vh), 0);
   }
-  50% {
-    transform: translate3d(var(--roam-x, 20vw), var(--roam-y-up, -3vh), 0);
+  48% {
+    transform: translate3d(var(--path-x-2, 16vw), var(--path-y-2, 3vh), 0);
   }
-  97% {
-    transform: translate3d(0, var(--roam-y-down, 2vh), 0);
+  72% {
+    transform: translate3d(var(--path-x-3, 6vw), var(--path-y-3, 7vh), 0);
   }
   100% {
     transform: translate3d(0, 0, 0);
@@ -4660,6 +4663,18 @@ select {
   }
   100% {
     transform: scaleX(1);
+  }
+}
+
+@keyframes creature-face-reverse {
+  0%, 45% {
+    transform: scaleX(-1);
+  }
+  51%, 96% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(-1);
   }
 }
 
@@ -5012,6 +5027,41 @@ select {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     background: rgba(237, 249, 252, 0.72);
+  }
+
+  .scene3-surface-section .ocean-creature-3d.is-lane-left .creature-swim {
+    --path-x-1: 5vw !important;
+    --path-y-1: -1vh !important;
+    --path-x-2: 9vw !important;
+    --path-y-2: 2vh !important;
+    --path-x-3: 4vw !important;
+    --path-y-3: 4vh !important;
+  }
+
+  .scene3-surface-section .ocean-creature-3d.is-lane-right .creature-swim {
+    --path-x-1: -5vw !important;
+    --path-y-1: -1vh !important;
+    --path-x-2: -9vw !important;
+    --path-y-2: 2vh !important;
+    --path-x-3: -4vw !important;
+    --path-y-3: 4vh !important;
+  }
+
+  .scene3-surface-section .ocean-creature-3d.is-lane-top .creature-swim,
+  .scene3-surface-section .ocean-creature-3d.is-lane-bottom .creature-swim {
+    --path-x-1: 4vw !important;
+    --path-y-1: 1vh !important;
+    --path-x-2: 7vw !important;
+    --path-y-2: 2vh !important;
+    --path-x-3: 3vw !important;
+    --path-y-3: 1vh !important;
+  }
+
+  .scene3-surface-section .ocean-creature-3d.is-lane-top.is-reverse-lane .creature-swim,
+  .scene3-surface-section .ocean-creature-3d.is-lane-bottom.is-reverse-lane .creature-swim {
+    --path-x-1: -4vw !important;
+    --path-x-2: -7vw !important;
+    --path-x-3: -3vw !important;
   }
 
   .scene4-glass-card {
