@@ -1,14 +1,5 @@
 {
-  "default": {
-    "display": "Bạn",
-    "pronoun": "bạn",
-    "msg": null,
-    "music": null,
-    "creature": "clownfish",
-    "creatureMsg": "Với mình, bạn giống một chú cá hề - luôn mang lại tiếng cười cho mọi người xung quanh.",
-    "avatar": null
-  },
-  "Khôi Đăng": {
+  "Khoi-Dang": {
     "display": "Khôi Đăng",
     "pronoun": "bạn",
     "msg": null,
@@ -71,7 +62,7 @@
     "creatureMsg": "An thì giống một chú cá nóc - nhìn thì bé mà uống thì kinh, thải độc cũng nhanh",
     "avatar": null
   },
-  "ha-my-c3": {
+  "ha-my": {
     "display": "Hà My",
     "pronoun": "bạn",
     "msg": "Hà My là một trong những người bạn cấp 3 mà mình nghĩ đến là thấy rất nhiều kỷ niệm ùa về. Đã cùng đi qua những ngày mà mọi cảm xúc đều rất rõ ràng, chân thật và không pha tí buồn phiền nào. My cá tính, hài hước, tâm lý, xinh, đảm đang và luôn có một kiểu hiện diện rất mạnh trong ký ức của mình.\n\nNhìn My đi tiếp, rõ ràng hơn, mạnh hơn, mình thật sự thấy vui, nhất là sau khi đời vả vào mặt bạn toàn những chuyện không đâu, nhưng có lẽ đấy chỉ là sự thanh lọc cần thiết sau này thôi. Cảm ơn Hà My vì đã là một phần rất lớn của những năm tháng trước đây, mong sau này cũng thế, My đã đang và sẽ luôn là một người mình luôn trân trọng.\n\nHôm đấy đi staff nhé", 
