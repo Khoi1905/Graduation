@@ -1,9 +1,10 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { useRef, useMemo, useId, useState, useEffect, type CSSProperties } from "react";
 import { useCountdown } from "@/hooks/useCountdown";
 import OceanCreature from "@/components/OceanCreature";
+import CreatureSprite from "@/components/CreatureSprite";
 import guestsData from "../../../data/guests.json";
 import type { CreatureType, Guest } from "@/types/guest";
 import UnderwaterScenery from "./UnderwaterScenery";
@@ -28,6 +29,14 @@ interface RsvpRow {
   attendance?: string | null;
   note?: string | null;
   avatar_url?: string | null;
+}
+
+interface CreatureDetail {
+  name: string;
+  creature: CreatureType;
+  avatar: string | null;
+  message: string | null;
+  isHighlighted?: boolean;
 }
 
 const dioramaObjects = [
@@ -181,6 +190,72 @@ function CountdownCard({ value, label, delay }: { value: number; label: string; 
   );
 }
 
+function CreatureDetailPanel({ detail, onClose }: { detail: CreatureDetail | null; onClose: () => void }) {
+  const initials = detail?.name.slice(0, 1).toUpperCase() ?? "";
+  const message = detail?.message?.trim();
+
+  return (
+    <AnimatePresence>
+      {detail && (
+        <>
+          <motion.button
+            type="button"
+            className="scene3-creature-detail-backdrop"
+            aria-label="Đóng lời chúc"
+            onClick={onClose}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          />
+          <motion.aside
+            className={`scene3-creature-detail-panel ${detail.isHighlighted ? "is-highlighted" : ""}`}
+            role="dialog"
+            aria-label={`Lời chúc của ${detail.name}`}
+            initial={{ opacity: 0, y: 18, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 12, scale: 0.98 }}
+            transition={{ duration: 0.28, ease: [0.22, 0.74, 0.24, 1] }}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="scene3-creature-detail-close"
+              aria-label="Đóng"
+              onClick={onClose}
+            >
+              ×
+            </button>
+
+            <div className="scene3-creature-detail-photo">
+              {detail.avatar ? (
+                <img src={detail.avatar} alt={`Ảnh của ${detail.name}`} />
+              ) : (
+                <div className="scene3-creature-detail-avatar-fallback">
+                  <span>{initials}</span>
+                  <CreatureSprite creature={detail.creature} size={86} facing="right" />
+                </div>
+              )}
+            </div>
+
+            <div className="scene3-creature-detail-copy">
+              <p className="scene3-creature-detail-eyebrow">Lời chúc từ đại dương</p>
+              <h3>{detail.name}</h3>
+              <div className="scene3-creature-detail-creature" aria-hidden="true">
+                <CreatureSprite creature={detail.creature} size={34} facing="right" />
+                <span>Sinh vật của {detail.name}</span>
+              </div>
+              <p className="scene3-creature-detail-message">
+                {message || "Chưa có lời chúc, nhưng ảnh của bạn đã bơi cùng lời mời này."}
+              </p>
+            </div>
+          </motion.aside>
+        </>
+      )}
+    </AnimatePresence>
+  );
+}
+
 export default function Scene3Surface({ scrollProgress, guest, rsvpConfirmed, deferCreatureMount = false }: Props) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-20%" });
@@ -193,6 +268,7 @@ export default function Scene3Surface({ scrollProgress, guest, rsvpConfirmed, de
   const [ownNote, setOwnNote] = useState<string | null>(null);
   const [ownAvatar, setOwnAvatar] = useState<string | null>(null);
   const [creaturesReady, setCreaturesReady] = useState(!deferCreatureMount);
+  const [selectedCreatureDetail, setSelectedCreatureDetail] = useState<CreatureDetail | null>(null);
 
   const guestDirectory = useMemo(() => {
     const directory: Record<string, GuestEntry> = {};
@@ -285,6 +361,22 @@ export default function Scene3Surface({ scrollProgress, guest, rsvpConfirmed, de
     return rsvpCreatures.filter((entry) => entry.key !== currentGuestKey);
   }, [currentGuestKey, hasHighlightedGuest, rsvpCreatures]);
   const totalCreatures = creatures.length + (hasHighlightedGuest ? 1 : 0);
+  const highlightedAvatar = guest ? ownAvatar ?? guestAvatars[guest.key] ?? guest.avatar : null;
+  const highlightedMessage = guest ? ownNote ?? guestNotes[guest.key] ?? null : null;
+  const highlightedHasDetail = Boolean(highlightedAvatar || highlightedMessage?.trim());
+
+  useEffect(() => {
+    if (!selectedCreatureDetail) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedCreatureDetail(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedCreatureDetail]);
 
   const infoItems = [
     { text: "Chủ nhật, 05 tháng 7, 2026", className: "font-semibold" },
@@ -309,17 +401,31 @@ export default function Scene3Surface({ scrollProgress, guest, rsvpConfirmed, de
       <SunRays />
 
       {/* Ocean creatures swimming around */}
-      {isInView && creaturesReady && creatures.map((c, i) => (
-        <OceanCreature
-          key={c.key}
-          name={c.display}
-          creature={c.creature}
-          avatar={guestAvatars[c.key] ?? c.avatar}
-          index={i}
-          total={totalCreatures}
-          message={currentGuestKey && c.key === currentGuestKey ? null : guestNotes[c.key] ?? null}
-        />
-      ))}
+      {isInView && creaturesReady && creatures.map((c, i) => {
+        const creatureAvatar = guestAvatars[c.key] ?? c.avatar;
+        const creatureMessage = guestNotes[c.key] ?? null;
+        const hasDetail = Boolean(creatureAvatar || creatureMessage?.trim());
+
+        return (
+          <OceanCreature
+            key={c.key}
+            name={c.display}
+            creature={c.creature}
+            avatar={creatureAvatar}
+            index={i}
+            total={totalCreatures}
+            message={creatureMessage}
+            fullMessage={creatureMessage}
+            hasDetail={hasDetail}
+            onSelect={hasDetail ? () => setSelectedCreatureDetail({
+              name: c.display,
+              creature: c.creature,
+              avatar: creatureAvatar,
+              message: creatureMessage,
+            }) : undefined}
+          />
+        );
+      })}
 
       {/* Guest's own creature appears after RSVP confirmation */}
       {isInView && creaturesReady && hasHighlightedGuest && guest && (
@@ -327,13 +433,24 @@ export default function Scene3Surface({ scrollProgress, guest, rsvpConfirmed, de
           key="you"
           name={guest.display}
           creature={guest.creature}
-          avatar={ownAvatar ?? guestAvatars[guest.key] ?? guest.avatar}
+          avatar={highlightedAvatar}
           index={creatures.length}
           total={totalCreatures}
           isHighlighted
-          message={ownNote ?? guestNotes[guest.key] ?? null}
+          message={highlightedMessage}
+          fullMessage={highlightedMessage}
+          hasDetail={highlightedHasDetail}
+          onSelect={highlightedHasDetail ? () => setSelectedCreatureDetail({
+            name: guest.display,
+            creature: guest.creature,
+            avatar: highlightedAvatar,
+            message: highlightedMessage,
+            isHighlighted: true,
+          }) : undefined}
         />
       )}
+
+      <CreatureDetailPanel detail={selectedCreatureDetail} onClose={() => setSelectedCreatureDetail(null)} />
 
       <div className="scene3-event-panel object-panel-3d max-w-2xl text-center relative z-20">
         <motion.h2

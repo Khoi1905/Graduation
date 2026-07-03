@@ -8,6 +8,15 @@
     "creatureMsg": "Với mình, bạn giống một chú cá hề - luôn mang lại tiếng cười cho mọi người xung quanh.",
     "avatar": null
   },
+  "hoang-anh": {
+    "display": "Hoàng Anh",
+    "pronoun": "em",
+    "msg": "Anh em mình như kiểu biết nhau sớm nhưng quen nhau muộn. Hoàng Anh thì rất là Hoàng Anh rồi, học giỏi, cá tính, gần đây mới thấy là cũm cũm cảm xúc.\n\nAnh thì chưa biết nhiều về em, chỉ biết là láo vcl, nhiều lúc cỏ lúa bằng nhau, nhưng mà thấy cũng được. Chúc em thời gian tới đạt nhiều thành công ở FPT, hoặc cứ sang Vin đi đớp hai đầu không sao đâu cu.\n\nRảnh rang thì cuối tuần ghé qua chụp cái ảnh nhé",  
+    "music": null,
+    "creature": "ray",
+    "creatureMsg": "Anh thấy em giống cá đuối, im lặng mà làm, nhưng làm tới đâu là để lại thành công tới đấy (tại cá đuối di chuyển đuôi để lại vết á iêm)",
+    "avatar": null
+  },
   "hamy": {
     "display": "Hamy",
     "pronoun": "bạn",
@@ -62,7 +71,7 @@
     "creatureMsg": "An thì giống một chú cá nóc - nhìn thì bé mà uống thì kinh, thải độc cũng nhanh",
     "avatar": null
   },
-  "ha-my": {
+  "ha-my-c3": {
     "display": "Hà My",
     "pronoun": "bạn",
     "msg": "Hà My là một trong những người bạn cấp 3 mà mình nghĩ đến là thấy rất nhiều kỷ niệm ùa về. Đã cùng đi qua những ngày mà mọi cảm xúc đều rất rõ ràng, chân thật và không pha tí buồn phiền nào. My cá tính, hài hước, tâm lý, xinh, đảm đang và luôn có một kiểu hiện diện rất mạnh trong ký ức của mình.\n\nNhìn My đi tiếp, rõ ràng hơn, mạnh hơn, mình thật sự thấy vui, nhất là sau khi đời vả vào mặt bạn toàn những chuyện không đâu, nhưng có lẽ đấy chỉ là sự thanh lọc cần thiết sau này thôi. Cảm ơn Hà My vì đã là một phần rất lớn của những năm tháng trước đây, mong sau này cũng thế, My đã đang và sẽ luôn là một người mình luôn trân trọng.\n\nHôm đấy đi staff nhé", 

@@ -13,6 +13,9 @@ interface Props {
   total: number;
   isHighlighted?: boolean;
   message?: string | null;
+  fullMessage?: string | null;
+  hasDetail?: boolean;
+  onSelect?: () => void;
 }
 
 const MESSAGE_MAX_CHARS = 90;
@@ -31,8 +34,21 @@ const LANES: Array<{ left: number; top: number }> = [
   { left: 34, top: 56 },
 ];
 
-export default function OceanCreature({ name, creature, avatar, index, total, isHighlighted, message }: Props) {
+export default function OceanCreature({
+  name,
+  creature,
+  avatar,
+  index,
+  total,
+  isHighlighted,
+  message,
+  fullMessage,
+  hasDetail,
+  onSelect,
+}: Props) {
   const initials = name.slice(0, 1).toUpperCase();
+  const detailMessage = fullMessage ?? message;
+  const isInteractive = Boolean(onSelect && hasDetail);
 
   const lane = LANES[index % LANES.length];
   const leftBase = isHighlighted ? 63 : lane.left;
@@ -50,15 +66,31 @@ export default function OceanCreature({ name, creature, avatar, index, total, is
   const animDelay = isHighlighted ? 0.15 : 0.2 + index * 0.28;
   const spriteSize = isHighlighted ? 80 : (total > 10 ? 58 : 68);
 
-  const trimmedMessage = message?.trim()
-    ? message.trim().length > MESSAGE_MAX_CHARS
-      ? `${message.trim().slice(0, MESSAGE_MAX_CHARS)}…`
-      : message.trim()
+  const trimmedMessage = detailMessage?.trim()
+    ? detailMessage.trim().length > MESSAGE_MAX_CHARS
+      ? `${detailMessage.trim().slice(0, MESSAGE_MAX_CHARS)}…`
+      : detailMessage.trim()
     : null;
 
   return (
-    <motion.div
-      className={`ocean-creature-3d absolute pointer-events-none ${isHighlighted ? "is-highlighted" : ""}`}
+    <motion.button
+      type="button"
+      disabled={!isInteractive}
+      aria-label={isInteractive ? `Xem lời chúc của ${name}` : undefined}
+      onClick={(event) => {
+        if (!isInteractive) return;
+        event.stopPropagation();
+        onSelect?.();
+      }}
+      onKeyDown={(event) => {
+        if (!isInteractive) return;
+        event.stopPropagation();
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onSelect?.();
+        }
+      }}
+      className={`ocean-creature-3d absolute ${isInteractive ? "is-detail-enabled" : "pointer-events-none"} ${isHighlighted ? "is-highlighted" : ""}`}
       style={{
         left: `${leftBase}%`,
         top: `${topBase}%`,
@@ -130,6 +162,6 @@ export default function OceanCreature({ name, creature, avatar, index, total, is
           </span>
         </div>
       </div>
-    </motion.div>
+    </motion.button>
   );
 }

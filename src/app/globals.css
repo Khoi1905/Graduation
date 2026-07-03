@@ -2977,6 +2977,45 @@ select {
   translate: -50% -50%;
   transform-style: preserve-3d;
   filter: drop-shadow(0 12px 14px rgba(2, 12, 24, 0.2));
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+}
+
+.ocean-creature-3d:disabled {
+  cursor: default;
+}
+
+.ocean-creature-3d.is-detail-enabled {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.ocean-creature-3d.is-detail-enabled .avatar-bubble-3d,
+.ocean-creature-3d.is-detail-enabled .creature-label-3d {
+  transition: box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.ocean-creature-3d.is-detail-enabled:hover .avatar-bubble-3d,
+.ocean-creature-3d.is-detail-enabled:focus-visible .avatar-bubble-3d {
+  border-color: rgba(255, 244, 190, 0.82);
+  box-shadow:
+    0 0 0 3px rgba(255, 236, 167, 0.24),
+    0 10px 18px rgba(10, 42, 56, 0.18),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.ocean-creature-3d.is-detail-enabled:hover .creature-label-3d,
+.ocean-creature-3d.is-detail-enabled:focus-visible .creature-label-3d {
+  background: rgba(252, 255, 243, 0.78);
+}
+
+.ocean-creature-3d.is-detail-enabled:focus-visible {
+  outline: none;
 }
 
 .creature-swim {
@@ -3083,6 +3122,198 @@ select {
   background:
     radial-gradient(ellipse at 42% 22%, rgba(255, 255, 232, 0.42), transparent 58%),
     radial-gradient(ellipse at 58% 50%, rgba(105, 221, 240, 0.22), transparent 72%);
+}
+
+.scene3-creature-detail-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  border: 0;
+  background:
+    radial-gradient(circle at 64% 28%, rgba(255, 245, 206, 0.2), transparent 34%),
+    rgba(7, 32, 47, 0.18);
+  backdrop-filter: blur(2px);
+  cursor: default;
+}
+
+.scene3-creature-detail-panel {
+  position: fixed;
+  top: clamp(5rem, 12vh, 7.5rem);
+  right: clamp(1rem, 3vw, 3rem);
+  z-index: 35;
+  width: min(420px, calc(100vw - 2rem));
+  max-height: calc(100vh - 10.5rem);
+  display: grid;
+  grid-template-columns: minmax(132px, 0.82fr) minmax(0, 1fr);
+  gap: 16px;
+  padding: 18px;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(238, 255, 253, 0.58);
+  background:
+    linear-gradient(145deg, rgba(242, 252, 250, 0.95), rgba(188, 225, 226, 0.82)),
+    radial-gradient(circle at 12% 8%, rgba(255, 247, 210, 0.52), transparent 42%);
+  color: rgba(8, 36, 50, 0.9);
+  box-shadow:
+    0 24px 54px rgba(3, 25, 39, 0.24),
+    0 0 0 1px rgba(255, 255, 255, 0.28) inset;
+  backdrop-filter: blur(16px);
+}
+
+.scene3-creature-detail-panel.is-highlighted {
+  border-color: rgba(255, 235, 162, 0.74);
+  box-shadow:
+    0 26px 58px rgba(3, 25, 39, 0.25),
+    0 0 28px rgba(255, 229, 145, 0.26),
+    0 0 0 1px rgba(255, 255, 255, 0.34) inset;
+}
+
+.scene3-creature-detail-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(8, 36, 50, 0.12);
+  border-radius: 999px;
+  background: rgba(250, 255, 253, 0.72);
+  color: rgba(8, 36, 50, 0.76);
+  font-size: 22px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(8, 36, 50, 0.1);
+}
+
+.scene3-creature-detail-close:hover,
+.scene3-creature-detail-close:focus-visible {
+  background: rgba(255, 255, 248, 0.94);
+  outline: none;
+}
+
+.scene3-creature-detail-photo {
+  min-height: 190px;
+  border-radius: 18px;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 250, 0.5), rgba(85, 157, 174, 0.22)),
+    radial-gradient(circle at 40% 28%, rgba(255, 255, 255, 0.76), transparent 44%);
+  border: 1px solid rgba(255, 255, 255, 0.66);
+  box-shadow:
+    0 14px 26px rgba(8, 36, 50, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.84);
+}
+
+.scene3-creature-detail-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 190px;
+  object-fit: cover;
+  display: block;
+}
+
+.scene3-creature-detail-avatar-fallback {
+  width: 100%;
+  height: 100%;
+  min-height: 190px;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.scene3-creature-detail-avatar-fallback > span {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: rgba(8, 36, 50, 0.7);
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+}
+
+.scene3-creature-detail-copy {
+  min-width: 0;
+  padding: 8px 4px 4px 0;
+}
+
+.scene3-creature-detail-eyebrow {
+  margin: 0 0 6px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(8, 55, 70, 0.5);
+  font-family: var(--font-be-vietnam), system-ui, sans-serif;
+}
+
+.scene3-creature-detail-copy h3 {
+  margin: 0;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  line-height: 1;
+  color: rgba(7, 30, 46, 0.92);
+}
+
+.scene3-creature-detail-creature {
+  margin: 10px 0 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 9px 3px 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.46);
+  color: rgba(8, 55, 70, 0.58);
+  font-size: 11px;
+  font-family: var(--font-be-vietnam), system-ui, sans-serif;
+}
+
+.scene3-creature-detail-message {
+  max-height: min(34vh, 280px);
+  margin: 0;
+  overflow: auto;
+  padding-right: 6px;
+  white-space: pre-line;
+  font-family: var(--font-be-vietnam), system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(8, 36, 50, 0.78);
+}
+
+@media (max-width: 900px) {
+  .scene3-creature-detail-panel {
+    top: auto;
+    left: 12px;
+    right: 12px;
+    bottom: calc(5.4rem + env(safe-area-inset-bottom));
+    width: auto;
+    max-height: min(72vh, 620px);
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 16px;
+    overflow-y: auto;
+    border-radius: 20px;
+  }
+
+  .scene3-creature-detail-photo,
+  .scene3-creature-detail-photo img,
+  .scene3-creature-detail-avatar-fallback {
+    min-height: 168px;
+    max-height: 220px;
+  }
+
+  .scene3-creature-detail-copy {
+    padding: 0 2px 2px;
+  }
+
+  .scene3-creature-detail-message {
+    max-height: 26vh;
+    font-size: 12px;
+  }
 }
 
 .creature-sprite-shell {
