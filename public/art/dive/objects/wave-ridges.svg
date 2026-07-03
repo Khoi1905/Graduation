@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 220" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="wave-a" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff8d8" stop-opacity=".22"/>
+      <stop offset=".22" stop-color="#fff8d8" stop-opacity=".5"/>
+      <stop offset=".52" stop-color="#e9fff8" stop-opacity=".34"/>
+      <stop offset=".78" stop-color="#fff1bd" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#fff8d8" stop-opacity=".22"/>
+    </linearGradient>
+    <linearGradient id="wave-b" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d8fff8" stop-opacity=".08"/>
+      <stop offset=".5" stop-color="#ffffff" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#d8fff8" stop-opacity=".08"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 58 C100 36 200 36 300 58 S500 80 600 58 S800 36 900 58 S1100 80 1200 58" stroke="url(#wave-a)" stroke-width="4" opacity=".92"/>
+    <path d="M0 106 C120 88 180 126 300 106 S480 86 600 106 S780 126 900 106 S1080 86 1200 106" stroke="url(#wave-b)" stroke-width="3" opacity=".76"/>
+    <path d="M0 154 C90 140 210 168 300 154 S510 140 600 154 S810 168 900 154 S1110 140 1200 154" stroke="url(#wave-a)" stroke-width="2" opacity=".5"/>
+    <path d="M0 188 C150 174 150 202 300 188 S450 174 600 188 S750 202 900 188 S1050 174 1200 188" stroke="url(#wave-b)" stroke-width="1.5" opacity=".32"/>
+  </g>
+</svg>

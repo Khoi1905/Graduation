@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff4c7" stop-opacity=".46"/>
+      <stop offset=".48" stop-color="#d7fff7" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#77c4d0" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+  <g filter="url(#blur)">
+    <path fill="url(#haze)" d="M0 176c170-42 276 30 410-4 172-44 312-58 472-8 104 32 210 20 318-8v164H0V176Z"/>
+    <path fill="#fffbe8" opacity=".36" d="M0 148c170 18 274-20 420-10 168 12 284 44 444 16 128-22 228-20 336 12v38c-150-30-266-24-410 4-152 30-270-34-432-36-112-2-208 12-358-2v-22Z"/>
+  </g>
+</svg>

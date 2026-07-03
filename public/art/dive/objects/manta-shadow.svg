@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 260">
+  <defs>
+    <radialGradient id="ray" cx=".5" cy=".45" r=".68">
+      <stop offset="0" stop-color="#82e4df" stop-opacity=".34"/>
+      <stop offset=".5" stop-color="#0e5265" stop-opacity=".52"/>
+      <stop offset="1" stop-color="#010817" stop-opacity=".86"/>
+    </radialGradient>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="1.8"/>
+    </filter>
+  </defs>
+  <path filter="url(#soft)" fill="url(#ray)" d="M42 122c82-70 150-92 218-54 68-38 136-16 218 54-82 18-138 44-172 78-24 22-42 34-46 50-4-16-22-28-46-50-34-34-90-60-172-78Z"/>
+  <path fill="#bdfbf2" opacity=".12" d="M150 116c70-18 146-18 220 0-82 8-154 10-220 0Z"/>
+</svg>

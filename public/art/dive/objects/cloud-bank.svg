@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 300">
+  <defs>
+    <linearGradient id="cloud" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff9df" stop-opacity=".88"/>
+      <stop offset=".56" stop-color="#e9fff8" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#9ed2d6" stop-opacity=".08"/>
+    </linearGradient>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="3.2"/>
+    </filter>
+  </defs>
+  <g filter="url(#soft)" fill="url(#cloud)">
+    <ellipse cx="150" cy="158" rx="122" ry="42"/>
+    <ellipse cx="282" cy="132" rx="178" ry="58"/>
+    <ellipse cx="454" cy="150" rx="164" ry="50"/>
+    <ellipse cx="620" cy="118" rx="198" ry="64"/>
+    <ellipse cx="804" cy="154" rx="144" ry="46"/>
+    <path d="M22 162c150 34 268 22 414 10 176-14 326-18 522 18v68H22v-96Z"/>
+  </g>
+  <path fill="#fffdf0" opacity=".35" d="M64 160c122 18 232-10 356-8 178 4 328 26 496 14v18c-178 24-320-12-500-10-130 2-230 28-352 4v-18Z"/>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff7c9" stop-opacity=".78"/>
+      <stop offset=".38" stop-color="#bcfff5" stop-opacity=".36"/>
+      <stop offset="1" stop-color="#4ab5c8" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+  <path fill="url(#surface)" d="M0 72c112-34 202 32 324-8 112-36 190-70 324-18 126 48 236-18 552 24V0H0v72Z"/>
+  <path filter="url(#glow)" fill="#fff9db" opacity=".38" d="M0 86c148 22 232-22 342-10 124 14 188 54 306 14 142-48 278-22 552 18v32c-274-42-414-68-552-20-126 44-202-26-330-26-102 0-180 28-318 12V86Z"/>
+</svg>

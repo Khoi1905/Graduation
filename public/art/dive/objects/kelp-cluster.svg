@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 520">
+  <defs>
+    <linearGradient id="kelp" x1="0" y1="520" x2="0" y2="0">
+      <stop offset="0" stop-color="#03131d" stop-opacity=".92"/>
+      <stop offset=".58" stop-color="#073040" stop-opacity=".78"/>
+      <stop offset="1" stop-color="#2aa18f" stop-opacity=".36"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#kelp)" stroke-linecap="round">
+    <path d="M54 520C45 430 82 380 66 298 52 226 76 154 116 84" stroke-width="18"/>
+    <path d="M128 520c12-98-34-180-12-278 12-54 42-104 92-154" stroke-width="15"/>
+    <path d="M184 520c-6-74 18-132 4-206-12-64-2-122 34-182" stroke-width="12"/>
+    <path d="M92 404c-36-20-50-48-58-88" stroke-width="10"/>
+    <path d="M110 342c-42-10-66-36-86-76" stroke-width="11"/>
+    <path d="M122 278c-34-28-42-62-42-108" stroke-width="9"/>
+    <path d="M138 358c38-18 60-48 76-88" stroke-width="10"/>
+    <path d="M152 288c42-8 70-34 92-78" stroke-width="9"/>
+    <path d="M170 220c34-20 56-50 66-92" stroke-width="8"/>
+  </g>
+  <g fill="#74dcc4" opacity=".18">
+    <ellipse cx="64" cy="316" rx="9" ry="16"/>
+    <ellipse cx="108" cy="246" rx="7" ry="13"/>
+    <ellipse cx="152" cy="304" rx="8" ry="15"/>
+    <ellipse cx="206" cy="212" rx="6" ry="12"/>
+  </g>
+</svg>

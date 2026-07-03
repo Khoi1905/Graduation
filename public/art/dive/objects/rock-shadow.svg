@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 340">
+  <defs>
+    <radialGradient id="rock" cx=".5" cy=".42" r=".7">
+      <stop offset="0" stop-color="#103848" stop-opacity=".56"/>
+      <stop offset=".58" stop-color="#051522" stop-opacity=".82"/>
+      <stop offset="1" stop-color="#01050b" stop-opacity=".96"/>
+    </radialGradient>
+  </defs>
+  <path fill="url(#rock)" d="M0 340V170c42-42 86-30 122-62 34-30 52-84 112-98 62-14 104 36 160 42 48 5 88-22 126 18v270H0Z"/>
+  <path fill="#6ad3d8" opacity=".08" d="M86 172c76-30 172-52 308-32-112 2-214 28-308 72v-40Z"/>
+</svg>
