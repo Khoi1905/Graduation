@@ -4699,6 +4699,27 @@ select {
     line-height: 1.5;
   }
 
+  .transform-text {
+    margin-top: clamp(30px, 7vh, 58px);
+    padding: 16px 18px 18px;
+  }
+
+  .transform-burst {
+    inset: -74px;
+  }
+
+  .transform-burst-wave-b {
+    inset: -16px;
+  }
+
+  .transform-burst-orbit {
+    inset: 14px;
+  }
+
+  .transform-burst-orbit-b {
+    inset: 30px;
+  }
+
   .scene3-event-panel {
     padding: 28px 16px;
   }
@@ -4883,6 +4904,9 @@ select {
   .transform-ray-warm,
   .transform-color-aurora span,
   .transform-creature-color-ring,
+  .transform-burst-wave,
+  .transform-burst-orbit,
+  .transform-spark,
   .transform-warm-mote,
   .transform-dive-splash span,
   .scene3-ambient-creature,
@@ -5068,7 +5092,7 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 0;
   z-index: 4;
   padding: 24px;
 }
@@ -5094,15 +5118,84 @@ select {
   will-change: transform, opacity;
 }
 
+.transform-burst {
+  position: absolute;
+  inset: -92px;
+  z-index: 0;
+  border-radius: 999px;
+  pointer-events: none;
+  transform: translateZ(0);
+  mix-blend-mode: screen;
+}
+
+.transform-burst-wave,
+.transform-burst-orbit {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.transform-burst-wave {
+  border: 1px solid rgba(255, 244, 188, 0.42);
+  box-shadow:
+    0 0 28px rgba(255, 230, 140, 0.34),
+    inset 0 0 24px rgba(136, 238, 232, 0.2);
+  opacity: 0;
+  animation: transform-burst-wave 2.4s cubic-bezier(0.16, 0.72, 0.22, 1) infinite;
+}
+
+.transform-burst-wave-b {
+  inset: -22px;
+  border-color: rgba(125, 235, 235, 0.34);
+  animation-delay: 0.62s;
+}
+
+.transform-burst-orbit {
+  inset: 18px;
+  border: 2px solid transparent;
+  background:
+    conic-gradient(from 10deg, transparent, rgba(255, 235, 143, 0.52), transparent 34%, rgba(111, 234, 232, 0.36), transparent 68%, rgba(255, 170, 218, 0.28), transparent) border-box;
+  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  animation: transform-burst-orbit 5.2s linear infinite;
+  opacity: 0.62;
+}
+
+.transform-burst-orbit-b {
+  inset: 36px;
+  opacity: 0.44;
+  animation-duration: 6.8s;
+  animation-direction: reverse;
+}
+
+.transform-spark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 255, 245, 0.96) 0%, rgba(255, 225, 128, 0.72) 42%, rgba(100, 230, 235, 0.1) 72%, transparent 100%);
+  box-shadow:
+    0 0 10px rgba(255, 241, 170, 0.72),
+    0 0 22px rgba(116, 234, 232, 0.34);
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(var(--spark-angle)) translateX(18px) scale(0.2);
+  animation: transform-spark-pop 2.2s cubic-bezier(0.18, 0.7, 0.24, 1) infinite;
+  animation-delay: var(--spark-delay);
+  will-change: transform, opacity;
+}
+
 .transform-creature-color-ring-a {
   background: conic-gradient(from 20deg, rgba(255, 230, 134, 0), rgba(255, 230, 134, 0.34), rgba(105, 232, 228, 0.22), rgba(255, 230, 134, 0));
-  animation: transform-color-ring-spin 3.2s linear infinite;
+  animation: transform-color-ring-spin 2.7s linear infinite;
 }
 
 .transform-creature-color-ring-b {
   inset: -60px;
   background: conic-gradient(from 160deg, rgba(98, 215, 245, 0), rgba(98, 215, 245, 0.26), rgba(178, 142, 255, 0.2), rgba(98, 215, 245, 0));
-  animation: transform-color-ring-spin 4.6s linear infinite reverse;
+  animation: transform-color-ring-spin 4s linear infinite reverse;
 }
 
 .transform-creature-glow {
@@ -5114,7 +5207,7 @@ select {
     radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.28), transparent 54%),
     radial-gradient(circle at 68% 68%, rgba(141, 236, 226, 0.2), transparent 58%);
   animation: transform-glow-pulse 1.8s ease-in-out infinite;
-  filter: blur(2px);
+  filter: blur(1.6px);
 }
 
 .transform-creature-sprite {
@@ -5126,8 +5219,45 @@ select {
 }
 
 @keyframes transform-glow-pulse {
-  0%, 100% { transform: scale(1); opacity: 0.7; }
-  50% { transform: scale(1.12); opacity: 1; }
+  0%, 100% { transform: scale(1); opacity: 0.76; }
+  50% { transform: scale(1.18); opacity: 1; }
+}
+
+@keyframes transform-burst-wave {
+  0% {
+    opacity: 0;
+    transform: scale(0.54);
+  }
+  20% {
+    opacity: 0.86;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.24);
+  }
+}
+
+@keyframes transform-burst-orbit {
+  0% { transform: rotate(0deg) scale(0.98); }
+  50% { transform: rotate(180deg) scale(1.04); }
+  100% { transform: rotate(360deg) scale(0.98); }
+}
+
+@keyframes transform-spark-pop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--spark-angle)) translateX(12px) scale(0.1);
+  }
+  18% {
+    opacity: 0.98;
+  }
+  58% {
+    opacity: 0.76;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--spark-angle)) translateX(var(--spark-distance)) scale(1);
+  }
 }
 
 @keyframes transform-color-ring-spin {
@@ -5162,6 +5292,7 @@ select {
 .transform-text {
   text-align: center;
   width: min(92vw, 420px);
+  margin-top: clamp(42px, 9vh, 84px);
   padding: 18px 22px 20px;
   border-radius: 18px;
   background: rgba(255, 250, 232, 0.82);

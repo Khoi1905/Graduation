@@ -74,6 +74,44 @@ function WarmMotes() {
   );
 }
 
+function TransformBurst() {
+  const sparks = useMemo(
+    () =>
+      Array.from({ length: 18 }, (_, index) => ({
+        id: index,
+        angle: index * 20,
+        distance: 58 + (index % 5) * 15,
+        delay: 0.08 + (index % 6) * 0.06,
+        size: 4 + (index % 3) * 2,
+      })),
+    [],
+  );
+
+  return (
+    <div className="transform-burst" aria-hidden="true">
+      <span className="transform-burst-wave transform-burst-wave-a" />
+      <span className="transform-burst-wave transform-burst-wave-b" />
+      <span className="transform-burst-orbit transform-burst-orbit-a" />
+      <span className="transform-burst-orbit transform-burst-orbit-b" />
+      {sparks.map((spark) => (
+        <span
+          key={spark.id}
+          className="transform-spark"
+          style={
+            {
+              "--spark-angle": `${spark.angle}deg`,
+              "--spark-distance": `${spark.distance}px`,
+              "--spark-delay": `${spark.delay}s`,
+              width: `${spark.size}px`,
+              height: `${spark.size}px`,
+            } as CSSProperties
+          }
+        />
+      ))}
+    </div>
+  );
+}
+
 function DiveSplash() {
   return (
     <div className="transform-dive-splash" aria-hidden="true">
@@ -171,6 +209,7 @@ export default function TransformationOverlay({
                   : { duration: 0.85, ease: "easeOut" }
               }
             >
+              <TransformBurst />
               <div className="transform-creature-color-ring transform-creature-color-ring-a" />
               <div className="transform-creature-color-ring transform-creature-color-ring-b" />
               <div className="transform-creature-glow" />
