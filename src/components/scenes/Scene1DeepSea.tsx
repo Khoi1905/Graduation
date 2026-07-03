@@ -121,9 +121,24 @@ function ScrollHint({ visible }: { visible: boolean }) {
   );
 }
 
+function getScene1SubjectPronoun(pronoun: Guest["pronoun"]) {
+  if (pronoun === "anh" || pronoun === "chị") return "em";
+  if (pronoun === "em") return "anh";
+  return "mình";
+}
+
+const INTRO_LINE_REVEAL_GAP = 0.85;
+
 export default function Scene1DeepSea({ guest, scrollProgress, started }: Props) {
   const opacity = scrollProgress < 0.18 ? 1 : Math.max(0, 1 - (scrollProgress - 0.18) * 6);
   const [showSubtext, setShowSubtext] = useState(false);
+  const subjectPronoun = getScene1SubjectPronoun(guest.pronoun);
+  const introLines = [
+    `Từ ngày bước chân vào đại học, điều đầu tiên ${subjectPronoun} cảm nhận được là áp lực.`,
+    "Thứ áp lực âm ỉ, thường trực, giống như đang ở dưới đáy đại dương, tối tăm, ngột ngạt và chẳng hề có phương hướng.",
+    `Nhưng rồi ${subjectPronoun} vẫn cứ đi, cứ tìm đường trong chính những mơ hồ ấy.`,
+    `Bởi khi đã từng ở dưới đáy, ${subjectPronoun} nhận ra rằng chỉ cần không dừng lại, đường nào cũng sẽ là đường đi lên.`,
+  ];
 
   useEffect(() => {
     setShowSubtext(false);
@@ -147,7 +162,7 @@ export default function Scene1DeepSea({ guest, scrollProgress, started }: Props)
         }}
       />
 
-      <div className="text-center max-w-lg relative z-10">
+      <div className="text-center w-full max-w-4xl relative z-10">
         <div
           className="absolute inset-0 -inset-x-20 -inset-y-10 pointer-events-none"
           style={{
@@ -168,18 +183,32 @@ export default function Scene1DeepSea({ guest, scrollProgress, started }: Props)
 
         <AnimatePresence>
           {showSubtext && (
-            <motion.p
-              className="font-sans text-lg md:text-xl text-ocean-cream/60 leading-relaxed"
+            <motion.div
+              className="scene1-intro-copy mx-auto"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 12 }}
               transition={{ duration: 1.2 }}
               style={{
                 textShadow: "0 0 30px rgba(100, 200, 255, 0.2)",
               }}
             >
-              Có một hành trình mà {guest.pronoun === "bạn" ? "mình" : "em"} muốn
-              kể {guest.pronoun} nghe.
-            </motion.p>
+              {introLines.map((line, index) => (
+                <motion.p
+                  key={line}
+                  className="font-serif"
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 1,
+                    delay: index * INTRO_LINE_REVEAL_GAP,
+                    ease: "easeOut",
+                  }}
+                >
+                  {line}
+                </motion.p>
+              ))}
+            </motion.div>
           )}
         </AnimatePresence>
       </div>

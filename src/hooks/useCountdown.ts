@@ -10,7 +10,7 @@ interface CountdownValues {
   passed: boolean;
 }
 
-const GRADUATION_DATE = new Date("2026-07-05T08:00:00+07:00");
+const GRADUATION_DATE = new Date("2026-07-05T14:30:00+07:00");
 
 export function useCountdown(): CountdownValues {
   const [now, setNow] = useState(new Date());

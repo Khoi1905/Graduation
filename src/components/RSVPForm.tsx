@@ -46,6 +46,8 @@ export default function RSVPForm({ guest, onRsvpComplete, rsvpDone }: Props) {
   const [avatarBusy, setAvatarBusy] = useState(false);
   const [transforming, setTransforming] = useState(false);
   const [loading, setLoading] = useState(false);
+  const noteStorageKey = `rsvp_note:${guest.key}`;
+  const avatarStorageKey = `rsvp_avatar:${guest.key}`;
 
   const handlePickFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -67,11 +69,6 @@ export default function RSVPForm({ guest, onRsvpComplete, rsvpDone }: Props) {
     try {
       const { getSupabase } = await import("@/lib/supabase");
       const supabase = getSupabase();
-      const { data: existing } = await supabase
-        .from("rsvp")
-        .select("id")
-        .eq("guest_key", guest.key)
-        .maybeSingle();
 
       let avatarUrl: string | null = null;
       if (avatar) {
@@ -88,22 +85,22 @@ export default function RSVPForm({ guest, onRsvpComplete, rsvpDone }: Props) {
         } catch {}
       }
 
-      if (!existing) {
-        await supabase.from("rsvp").insert({
-          guest_key: guest.key,
-          display_name: guest.display,
-          attendance: "yes",
-          note: note || null,
-          avatar_url: avatarUrl,
-        });
-      } else if (avatarUrl) {
-        await supabase.from("rsvp").update({ avatar_url: avatarUrl }).eq("guest_key", guest.key);
+      const payload: Record<string, string | null> = {
+        guest_key: guest.key,
+        display_name: guest.display,
+        attendance: "yes",
+        note: note || null,
+      };
+      if (avatarUrl) {
+        payload.avatar_url = avatarUrl;
       }
+
+      await supabase.from("rsvp").upsert(payload, { onConflict: "guest_key" });
     } catch {}
 
     try {
-      if (note) localStorage.setItem("rsvp_note", note);
-      if (avatar) localStorage.setItem("rsvp_avatar", avatar);
+      if (note) localStorage.setItem(noteStorageKey, note);
+      if (avatar) localStorage.setItem(avatarStorageKey, avatar);
     } catch {}
 
     setLoading(false);
@@ -123,7 +120,7 @@ export default function RSVPForm({ guest, onRsvpComplete, rsvpDone }: Props) {
             Cảm ơn {guest.display}!
           </p>
           <p className="text-ocean-deep/60 mt-2 text-sm">
-            Hẹn gặp {guest.pronoun} ở lễ tốt nghiệp nhé.
+            Hẹn gặp lại {guest.pronoun} ở lễ tốt nghiệp nhé.
           </p>
         </motion.div>
       </div>
@@ -137,7 +134,7 @@ export default function RSVPForm({ guest, onRsvpComplete, rsvpDone }: Props) {
         transition={{ duration: 0.5 }}
       >
         <h3 className="font-serif text-2xl text-ocean-deep text-center mb-6">
-          {guest.display} có đến không?
+          {guest.display} có thể đến không?
         </h3>
 
         <div className="flex flex-col items-center mb-5">

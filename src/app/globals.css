@@ -6,16 +6,40 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  overflow-x: hidden;
-  font-family: var(--font-be-vietnam), sans-serif;
-}
-
 :root {
+  --font-heading: var(--font-cormorant), Georgia, serif;
+  --font-body: var(--font-be-vietnam), Inter, system-ui, sans-serif;
+  --font-ui: var(--font-be-vietnam), Inter, system-ui, sans-serif;
+  --body-line-height: 1.72;
   --arrival-sun-size: clamp(178px, 22vw, 310px);
   --arrival-sun-center-right: clamp(141px, 25vw, 353px);
   --arrival-sun-center-top: clamp(132px, 26vh, 219px);
   --arrival-sun-x: calc(100% - var(--arrival-sun-center-right));
+}
+
+body {
+  --font-heading: var(--font-cormorant), Georgia, serif;
+  --font-body: var(--font-be-vietnam), Inter, system-ui, sans-serif;
+  --font-ui: var(--font-be-vietnam), Inter, system-ui, sans-serif;
+  overflow-x: hidden;
+  font-family: var(--font-body);
+  line-height: var(--body-line-height);
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-ui);
+}
+
+.font-serif {
+  font-family: var(--font-heading) !important;
+}
+
+.font-sans {
+  font-family: var(--font-body) !important;
 }
 
 .invitation-scene-app {
@@ -98,24 +122,31 @@ body {
 }
 
 .dive-loading-content {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  justify-items: center;
+  text-align: center;
   align-items: center;
   gap: 28px;
+  width: min(88vw, 260px);
 }
 
 .dive-loading-text {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.2;
   color: rgba(175, 230, 240, 0.7);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   animation: dive-loading-text-pulse 2.4s ease-in-out infinite;
 }
 
 .dive-loading-bubbles {
   display: flex;
-  gap: 14px;
+  width: 74px;
+  justify-content: center;
+  gap: 13px;
   align-items: flex-end;
+  margin-inline: auto;
+  transform: translateX(-2px);
 }
 
 .dive-loading-bubbles span {
@@ -137,6 +168,23 @@ body {
   width: 8px;
   height: 8px;
   animation-delay: 0.45s;
+}
+
+.scene1-intro-copy {
+  width: min(92vw, 880px);
+  color: rgba(240, 232, 216, 0.74);
+}
+
+.scene1-intro-copy p {
+  margin: 0 auto 0.58em;
+  font-size: clamp(1.12rem, 2.25vw, 1.52rem);
+  line-height: 1.48;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.scene1-intro-copy p:last-child {
+  margin-bottom: 0;
 }
 
 @keyframes dive-loading-bubble-bob {
@@ -406,7 +454,36 @@ body {
   z-index: 45;
   pointer-events: none;
   overflow: hidden;
+  contain: layout paint style;
+  transform: translateZ(0);
+  --sunburst-duration: 1450ms;
   background: transparent;
+}
+
+.sunburst-transition::before,
+.sunburst-transition::after {
+  content: "";
+  position: absolute;
+  inset: -5%;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.sunburst-transition::before {
+  background:
+    radial-gradient(ellipse 62% 54% at var(--arrival-sun-x) var(--arrival-sun-center-top), rgba(255, 253, 229, 0.98), rgba(255, 223, 146, 0.7) 28%, rgba(204, 240, 232, 0.48) 54%, rgba(42, 154, 174, 0.26) 74%, transparent 100%),
+    linear-gradient(180deg, rgba(248, 252, 238, 0.84), rgba(204, 235, 225, 0.72) 46%, rgba(45, 146, 165, 0.48) 100%);
+  animation: sunburst-soft-cover var(--sunburst-duration) ease-out forwards;
+  opacity: 0;
+}
+
+.sunburst-transition::after {
+  background:
+    linear-gradient(180deg, rgba(255, 248, 218, 0.54), rgba(255, 226, 164, 0.2) 36%, rgba(85, 183, 195, 0.26) 100%),
+    radial-gradient(ellipse 78% 48% at 50% 85%, rgba(14, 106, 130, 0.3), transparent 72%);
+  mix-blend-mode: screen;
+  animation: sunburst-sea-wash var(--sunburst-duration) ease-out forwards;
+  opacity: 0;
 }
 
 .sunburst-fill,
@@ -428,7 +505,7 @@ body {
     radial-gradient(circle, rgba(255, 252, 224, 0.98) 0%, rgba(255, 222, 145, 0.86) 14%, rgba(255, 232, 178, 0.58) 31%, rgba(204, 236, 234, 0.44) 52%, rgba(108, 196, 207, 0.24) 72%, transparent 100%);
   opacity: 0;
   transform: scale(0.02);
-  animation: sunburst-fill 1200ms cubic-bezier(0.2, 0.72, 0.18, 1) forwards;
+  animation: sunburst-fill var(--sunburst-duration) cubic-bezier(0.2, 0.72, 0.18, 1) forwards;
   will-change: transform, opacity;
 }
 
@@ -438,7 +515,7 @@ body {
     radial-gradient(ellipse 72% 78% at var(--arrival-sun-x) var(--arrival-sun-center-top), rgba(255, 250, 218, 0.96), rgba(255, 225, 148, 0.56) 28%, rgba(255, 236, 184, 0.28) 52%, transparent 74%),
     radial-gradient(ellipse 110% 92% at 50% 50%, rgba(255, 255, 255, 0.34), transparent 70%);
   opacity: 0;
-  animation: sunburst-warmth 1200ms ease-out forwards;
+  animation: sunburst-warmth var(--sunburst-duration) ease-out forwards;
   will-change: opacity, transform;
 }
 
@@ -453,7 +530,7 @@ body {
     radial-gradient(circle, rgba(255, 255, 244, 0.98) 0%, rgba(255, 239, 178, 0.66) 24%, rgba(255, 216, 132, 0.22) 48%, transparent 72%);
   filter: blur(4px);
   opacity: 0;
-  animation: sunburst-halo-expand 1200ms cubic-bezier(0.17, 0.74, 0.2, 1) forwards;
+  animation: sunburst-halo-expand var(--sunburst-duration) cubic-bezier(0.17, 0.74, 0.2, 1) forwards;
   will-change: transform, opacity;
 }
 
@@ -469,7 +546,7 @@ body {
     0 0 42px rgba(255, 244, 197, 0.68),
     0 0 120px rgba(255, 225, 150, 0.28);
   opacity: 0;
-  animation: sunburst-core-pulse 1200ms ease-out forwards;
+  animation: sunburst-core-pulse var(--sunburst-duration) ease-out forwards;
   will-change: transform, opacity;
 }
 
@@ -483,10 +560,45 @@ body {
   background: linear-gradient(90deg, transparent 22%, rgba(255, 226, 148, 0.2) 62%, rgba(255, 253, 226, 0.56) 100%);
   filter: blur(3px);
   opacity: 0;
-  animation: sunburst-ray-sweep 1200ms ease-out forwards;
+  animation: sunburst-ray-sweep var(--sunburst-duration) ease-out forwards;
   animation-delay: calc(var(--ray-index) * 38ms);
   rotate: calc(var(--ray-index) * 18deg - 72deg);
   will-change: transform, opacity;
+}
+
+@keyframes sunburst-soft-cover {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  24% {
+    opacity: 0.5;
+  }
+  52% {
+    opacity: 0.96;
+    transform: scale(1.02);
+  }
+  78% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.36;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes sunburst-sea-wash {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 3vh, 0);
+  }
+  46% {
+    opacity: 0.68;
+  }
+  100% {
+    opacity: 0.22;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @keyframes sunburst-fill {
@@ -692,6 +804,7 @@ body {
 
 .scene3-event-panel {
   padding: 34px 28px;
+  max-width: min(92vw, 680px);
   background:
     radial-gradient(ellipse 88% 60% at 50% 0%, rgba(255, 255, 248, 0.72), transparent 72%),
     linear-gradient(145deg, rgba(235, 250, 250, 0.68), rgba(122, 173, 185, 0.22));
@@ -702,6 +815,18 @@ body {
     0 0 0 1px rgba(204, 245, 242, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.78),
     inset 0 -18px 42px rgba(93, 138, 132, 0.09);
+}
+
+.scene3-event-panel h2,
+.scene3-event-panel .font-serif {
+  font-family: var(--font-heading) !important;
+  letter-spacing: 0;
+}
+
+.scene3-event-panel p,
+.scene3-event-panel a {
+  font-family: var(--font-body);
+  line-height: 1.6;
 }
 
 .scene3-surface-section {
@@ -2502,8 +2627,19 @@ body {
 }
 
 .scene2-story-copy {
-  padding: 28px 30px;
+  width: min(94vw, 900px);
+  padding: 24px 28px;
   text-shadow: 0 3px 20px rgba(0, 7, 14, 0.54);
+}
+
+.scene2-story-copy p {
+  font-family: var(--font-heading);
+  max-width: 38em;
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: 0;
+  line-height: 1.55;
+  text-wrap: pretty;
 }
 
 .countdown-tile-3d,
@@ -2519,6 +2655,7 @@ body {
 
 .scene4-glass-card {
   color: rgba(8, 29, 45, 0.96);
+  font-family: var(--font-body);
   overflow: hidden;
   isolation: isolate;
   border-radius: 12px;
@@ -2727,6 +2864,21 @@ body {
 
 .scene4-glass-card h1,
 .scene4-glass-card h2,
+.scene4-glass-card h3 {
+  font-family: var(--font-heading);
+  letter-spacing: 0;
+  line-height: 1.1;
+}
+
+.scene4-glass-card p,
+.scene4-glass-card input,
+.scene4-glass-card textarea,
+.scene4-glass-card button {
+  font-family: var(--font-body);
+}
+
+.scene4-glass-card h1,
+.scene4-glass-card h2,
 .scene4-glass-card h3,
 .scene4-glass-card p {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.34);
@@ -2879,7 +3031,7 @@ body {
   font-size: 10px;
   line-height: 1.35;
   text-align: center;
-  font-family: var(--font-sans, 'Be Vietnam Pro', sans-serif);
+  font-family: var(--font-body);
   box-shadow:
     0 10px 20px rgba(10, 34, 52, 0.16),
     inset 0 1px 0 rgba(255, 255, 255, 0.85);
@@ -4527,8 +4679,24 @@ body {
       radial-gradient(ellipse 80% 48% at 50% 48%, rgba(6, 18, 30, 0.38) 0%, rgba(6, 18, 30, 0.24) 46%, transparent 76%);
   }
 
+  .scene1-intro-copy {
+    width: min(94vw, 620px);
+  }
+
+  .scene1-intro-copy p {
+    font-size: clamp(1rem, 4.6vw, 1.18rem);
+    line-height: 1.44;
+    margin-bottom: 0.5em;
+  }
+
   .scene2-story-copy {
-    padding: 24px 16px;
+    width: min(96vw, 640px);
+    padding: 20px 12px;
+  }
+
+  .scene2-story-copy p {
+    max-width: 34em;
+    line-height: 1.5;
   }
 
   .scene3-event-panel {
@@ -4713,6 +4881,8 @@ body {
   .creature-sprite-frame,
   .creature-sprite-depth,
   .transform-ray-warm,
+  .transform-color-aurora span,
+  .transform-creature-color-ring,
   .transform-warm-mote,
   .transform-dive-splash span,
   .scene3-ambient-creature,
@@ -4758,6 +4928,9 @@ body {
   justify-content: center;
   pointer-events: auto;
   overflow: hidden;
+  contain: layout paint style;
+  transform: translateZ(0);
+  background: rgba(5, 34, 50, 0.18);
 }
 
 .transform-arrival-backdrop {
@@ -4765,10 +4938,11 @@ body {
   inset: 0;
   overflow: hidden;
   z-index: 0;
+  transform: translateZ(0);
 }
 
 .transform-arrival-backdrop .above-water-scenery {
-  opacity: 0.98;
+  opacity: 0.9;
 }
 
 .transform-warm-veil {
@@ -4792,6 +4966,48 @@ body {
   background:
     radial-gradient(circle at var(--arrival-sun-x) var(--arrival-sun-center-top), rgba(255, 249, 209, 0.42), rgba(255, 213, 136, 0.2) 35%, transparent 72%),
     linear-gradient(180deg, rgba(255, 241, 204, 0.08), rgba(20, 116, 138, 0.12) 55%, rgba(5, 40, 58, 0.24));
+}
+
+.transform-color-aurora {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+  mix-blend-mode: screen;
+}
+
+.transform-color-aurora span {
+  position: absolute;
+  width: 44vw;
+  max-width: 560px;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  filter: blur(42px);
+  opacity: 0.42;
+  transform: translate3d(0, 0, 0);
+  animation: transform-aurora-drift 5.8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.transform-color-aurora-a {
+  left: 12%;
+  top: 18%;
+  background: radial-gradient(circle, rgba(116, 232, 224, 0.58), transparent 68%);
+}
+
+.transform-color-aurora-b {
+  right: 10%;
+  top: 26%;
+  background: radial-gradient(circle, rgba(255, 207, 112, 0.56), transparent 70%);
+  animation-delay: -1.8s !important;
+}
+
+.transform-color-aurora-c {
+  left: 34%;
+  bottom: 8%;
+  background: radial-gradient(circle, rgba(167, 132, 255, 0.34), transparent 70%);
+  animation-delay: -3.2s !important;
 }
 
 .transform-rays {
@@ -4863,7 +5079,30 @@ body {
   align-items: center;
   justify-content: center;
   transform-origin: center;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
   will-change: transform, opacity;
+}
+
+.transform-creature-color-ring {
+  position: absolute;
+  inset: -42px;
+  border-radius: 999px;
+  opacity: 0.78;
+  mix-blend-mode: screen;
+  filter: blur(0.4px);
+  will-change: transform, opacity;
+}
+
+.transform-creature-color-ring-a {
+  background: conic-gradient(from 20deg, rgba(255, 230, 134, 0), rgba(255, 230, 134, 0.34), rgba(105, 232, 228, 0.22), rgba(255, 230, 134, 0));
+  animation: transform-color-ring-spin 3.2s linear infinite;
+}
+
+.transform-creature-color-ring-b {
+  inset: -60px;
+  background: conic-gradient(from 160deg, rgba(98, 215, 245, 0), rgba(98, 215, 245, 0.26), rgba(178, 142, 255, 0.2), rgba(98, 215, 245, 0));
+  animation: transform-color-ring-spin 4.6s linear infinite reverse;
 }
 
 .transform-creature-glow {
@@ -4871,13 +5110,16 @@ body {
   inset: -54px;
   border-radius: 50%;
   background:
-    radial-gradient(circle, rgba(255, 250, 214, 0.72) 0%, rgba(255, 209, 124, 0.32) 34%, rgba(119, 223, 235, 0.12) 58%, transparent 74%),
-    radial-gradient(circle, rgba(255, 255, 255, 0.18), transparent 70%);
-  animation: transform-glow-pulse 2s ease-in-out infinite;
+    radial-gradient(circle, rgba(255, 250, 214, 0.78) 0%, rgba(255, 209, 124, 0.36) 32%, rgba(119, 223, 235, 0.2) 58%, transparent 76%),
+    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.28), transparent 54%),
+    radial-gradient(circle at 68% 68%, rgba(141, 236, 226, 0.2), transparent 58%);
+  animation: transform-glow-pulse 1.8s ease-in-out infinite;
   filter: blur(2px);
 }
 
 .transform-creature-sprite {
+  transform: translateZ(0);
+  backface-visibility: hidden;
   filter:
     drop-shadow(0 0 24px rgba(255, 235, 166, 0.42))
     drop-shadow(0 18px 22px rgba(3, 36, 49, 0.28));
@@ -4886,6 +5128,23 @@ body {
 @keyframes transform-glow-pulse {
   0%, 100% { transform: scale(1); opacity: 0.7; }
   50% { transform: scale(1.12); opacity: 1; }
+}
+
+@keyframes transform-color-ring-spin {
+  0% { transform: rotate(0deg) scale(0.96); }
+  50% { transform: rotate(180deg) scale(1.04); }
+  100% { transform: rotate(360deg) scale(0.96); }
+}
+
+@keyframes transform-aurora-drift {
+  0%, 100% {
+    opacity: 0.28;
+    transform: translate3d(-2vw, 1vh, 0) scale(0.96);
+  }
+  46% {
+    opacity: 0.54;
+    transform: translate3d(2vw, -1vh, 0) scale(1.06);
+  }
 }
 
 .transform-bubble {
@@ -4914,7 +5173,7 @@ body {
 }
 
 .transform-creature-name {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-heading);
   font-size: 1.35rem;
   color: rgba(8, 32, 46, 0.92);
   margin-bottom: 12px;
@@ -4926,7 +5185,7 @@ body {
 }
 
 .transform-creature-msg {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-heading);
   font-style: italic;
   font-size: 0.95rem;
   color: rgba(8, 32, 46, 0.72);
@@ -4941,7 +5200,7 @@ body {
   min-width: 152px;
   background: linear-gradient(145deg, rgba(10, 64, 84, 0.98), rgba(12, 101, 116, 0.96));
   color: rgba(255, 250, 236, 0.98);
-  font-family: var(--font-sans, "Be Vietnam Pro", sans-serif);
+  font-family: var(--font-ui);
   font-size: 0.9rem;
   font-weight: 650;
   box-shadow:

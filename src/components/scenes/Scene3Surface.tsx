@@ -22,6 +22,14 @@ interface GuestEntry {
   avatar: string | null;
 }
 
+interface RsvpRow {
+  guest_key?: string | null;
+  display_name?: string | null;
+  attendance?: string | null;
+  note?: string | null;
+  avatar_url?: string | null;
+}
+
 const dioramaObjects = [
   { src: "/art/dive/objects/kelp-cluster.svg", className: "scene3-diorama-object scene3-depth-kelp scene3-depth-kelp-left" },
   { src: "/art/dive/objects/kelp-cluster.svg", className: "scene3-diorama-object scene3-depth-kelp scene3-depth-kelp-right" },
@@ -177,11 +185,28 @@ export default function Scene3Surface({ scrollProgress, guest, rsvpConfirmed, de
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-20%" });
   const countdown = useCountdown();
+  const currentGuestKey = guest?.key ?? null;
+  const hasHighlightedGuest = Boolean(rsvpConfirmed && guest);
+  const [rsvpCreatures, setRsvpCreatures] = useState<GuestEntry[]>([]);
   const [guestNotes, setGuestNotes] = useState<Record<string, string>>({});
   const [guestAvatars, setGuestAvatars] = useState<Record<string, string>>({});
   const [ownNote, setOwnNote] = useState<string | null>(null);
   const [ownAvatar, setOwnAvatar] = useState<string | null>(null);
   const [creaturesReady, setCreaturesReady] = useState(!deferCreatureMount);
+
+  const guestDirectory = useMemo(() => {
+    const directory: Record<string, GuestEntry> = {};
+    for (const [key, val] of Object.entries(guestsData as Record<string, Record<string, unknown>>)) {
+      if (key === "default") continue;
+      directory[key] = {
+        key,
+        display: val.display as string,
+        creature: (val.creature as CreatureType) || "clownfish",
+        avatar: (val.avatar as string) || null,
+      };
+    }
+    return directory;
+  }, []);
 
   useEffect(() => {
     if (deferCreatureMount) {
@@ -198,25 +223,52 @@ export default function Scene3Surface({ scrollProgress, guest, rsvpConfirmed, de
     let cancelled = false;
 
     try {
-      setOwnNote(localStorage.getItem("rsvp_note"));
-      setOwnAvatar(localStorage.getItem("rsvp_avatar"));
+      setOwnNote(currentGuestKey ? localStorage.getItem(`rsvp_note:${currentGuestKey}`) : null);
+      setOwnAvatar(currentGuestKey ? localStorage.getItem(`rsvp_avatar:${currentGuestKey}`) : null);
     } catch {}
 
     void (async () => {
       try {
         const { getSupabase } = await import("@/lib/supabase");
-        const { data } = await getSupabase().from("rsvp").select("guest_key, note, avatar_url");
+        const { data } = await getSupabase()
+          .from("rsvp")
+          .select("guest_key, display_name, attendance, note, avatar_url, created_at")
+          .eq("attendance", "yes")
+          .order("created_at", { ascending: false });
         if (cancelled || !data) return;
+        const entries: GuestEntry[] = [];
         const notes: Record<string, string> = {};
         const avatars: Record<string, string> = {};
-        for (const row of data) {
+        const seen = new Set<string>();
+
+        for (const row of data as RsvpRow[]) {
+          const key = typeof row.guest_key === "string" ? row.guest_key : "";
+          if (!key || key === "default" || seen.has(key)) continue;
+          seen.add(key);
+
+          const metadata = guestDirectory[key];
+          const displayName = typeof row.display_name === "string" && row.display_name.trim()
+            ? row.display_name.trim()
+            : metadata?.display ?? key;
+          const avatarUrl = typeof row.avatar_url === "string" && row.avatar_url.trim()
+            ? row.avatar_url
+            : metadata?.avatar ?? null;
+
+          entries.push({
+            key,
+            display: displayName,
+            creature: metadata?.creature ?? "clownfish",
+            avatar: avatarUrl,
+          });
+
           if (row.note && typeof row.note === "string" && row.note.trim()) {
-            notes[row.guest_key] = row.note.trim();
+            notes[key] = row.note.trim();
           }
-          if (row.avatar_url && typeof row.avatar_url === "string") {
-            avatars[row.guest_key] = row.avatar_url;
+          if (avatarUrl) {
+            avatars[key] = avatarUrl;
           }
         }
+        setRsvpCreatures(entries);
         setGuestNotes(notes);
         setGuestAvatars(avatars);
       } catch {
@@ -226,25 +278,17 @@ export default function Scene3Surface({ scrollProgress, guest, rsvpConfirmed, de
     return () => {
       cancelled = true;
     };
-  }, [creaturesReady]);
+  }, [creaturesReady, currentGuestKey, guestDirectory]);
 
   const creatures = useMemo(() => {
-    const entries: GuestEntry[] = [];
-    for (const [key, val] of Object.entries(guestsData as Record<string, Record<string, unknown>>)) {
-      if (key === "default") continue;
-      entries.push({
-        key,
-        display: val.display as string,
-        creature: (val.creature as CreatureType) || "clownfish",
-        avatar: (val.avatar as string) || null,
-      });
-    }
-    return entries;
-  }, []);
+    if (!hasHighlightedGuest || !currentGuestKey) return rsvpCreatures;
+    return rsvpCreatures.filter((entry) => entry.key !== currentGuestKey);
+  }, [currentGuestKey, hasHighlightedGuest, rsvpCreatures]);
+  const totalCreatures = creatures.length + (hasHighlightedGuest ? 1 : 0);
 
   const infoItems = [
     { text: "Chủ nhật, 05 tháng 7, 2026", className: "font-semibold" },
-    { text: "08:00 sáng", className: "" },
+    { text: "14:30 chiều", className: "" },
     { text: "Hội trường Nguyễn Văn Đạo", className: "" },
   ];
 
@@ -267,25 +311,25 @@ export default function Scene3Surface({ scrollProgress, guest, rsvpConfirmed, de
       {/* Ocean creatures swimming around */}
       {isInView && creaturesReady && creatures.map((c, i) => (
         <OceanCreature
-          key={c.display}
+          key={c.key}
           name={c.display}
           creature={c.creature}
           avatar={guestAvatars[c.key] ?? c.avatar}
           index={i}
-          total={creatures.length}
-          message={guest && c.key === guest.key ? null : guestNotes[c.key] ?? null}
+          total={totalCreatures}
+          message={currentGuestKey && c.key === currentGuestKey ? null : guestNotes[c.key] ?? null}
         />
       ))}
 
       {/* Guest's own creature appears after RSVP confirmation */}
-      {isInView && creaturesReady && rsvpConfirmed && guest && (
+      {isInView && creaturesReady && hasHighlightedGuest && guest && (
         <OceanCreature
           key="you"
           name={guest.display}
           creature={guest.creature}
           avatar={ownAvatar ?? guestAvatars[guest.key] ?? guest.avatar}
           index={creatures.length}
-          total={creatures.length + 1}
+          total={totalCreatures}
           isHighlighted
           message={ownNote ?? guestNotes[guest.key] ?? null}
         />

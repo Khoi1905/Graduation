@@ -52,7 +52,7 @@ export default function Scene2MidWater({ guest, scrollProgress: _scrollProgress 
         }}
       />
 
-      <div className="scene2-story-copy max-w-2xl text-center relative z-10 lg:ml-auto lg:mr-[9vw]">
+      <div className="scene2-story-copy max-w-none text-center relative z-10 lg:ml-auto lg:mr-[7vw]">
         <motion.div
           className="w-12 h-[1px] mx-auto mb-10"
           style={{ background: "linear-gradient(90deg, transparent, rgba(136,204,238,0.6), transparent)" }}
@@ -64,7 +64,7 @@ export default function Scene2MidWater({ guest, scrollProgress: _scrollProgress 
         {storyLines.map((line, i) => (
           <motion.p
             key={`${line.text}-${i}`}
-            className={`font-serif text-xl md:text-2xl leading-relaxed text-ocean-cream/90 ${line.paragraphEnd ? "mb-8" : "mb-4"} last:mb-0`}
+            className={`font-serif text-lg md:text-xl lg:text-[1.45rem] leading-relaxed text-ocean-cream/90 ${line.paragraphEnd ? "mb-7" : "mb-3"} last:mb-0`}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{

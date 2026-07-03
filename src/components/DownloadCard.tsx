@@ -43,13 +43,13 @@ export default function DownloadCard({ guest }: Props) {
             <p className="text-3xl mb-8 opacity-80">Gửi {guest.display},</p>
             <h2
               className="text-6xl font-bold mb-6"
-              style={{ fontFamily: "Lora, serif" }}
+              style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
             >
               Lễ Tốt Nghiệp
             </h2>
             <div className="text-2xl space-y-2 mb-10 opacity-90">
               <p>Chủ nhật, 05/07/2026</p>
-              <p>08:00 sáng</p>
+              <p>14:00 chiều</p>
             </div>
             <div className="text-xl opacity-80 space-y-1">
               <p>Hội trường Nguyễn Văn Đạo</p>

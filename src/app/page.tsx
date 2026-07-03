@@ -23,7 +23,7 @@ type RsvpStatus = "pending" | "confirmed" | "declined";
 
 const SCENE_PROGRESS = [0, 0.34, 0.68, 1] as const;
 const TRANSITION_MS = 1050;
-const SUNBURST_MS = 1200;
+const SUNBURST_MS = 1450;
 const BUBBLE_SURGE_MS = 1450;
 
 const SURFACE_CREATURE_SPRITE_SOURCES = [
@@ -391,18 +391,28 @@ function HomeContent() {
   const [settlingScene, setSettlingScene] = useState<number | null>(null);
   const settlingTimerRef = useRef<number | null>(null);
   const [rsvpStatus, setRsvpStatus] = useState<RsvpStatus>("pending");
+  const [rsvpStatusGuestKey, setRsvpStatusGuestKey] = useState<string | null>(null);
   const [transformActive, setTransformActive] = useState(false);
   const musicRef = useRef<MusicPlayerHandle>(null);
   const [experienceStarted, setExperienceStarted] = useState(false);
   const [musicReady, setMusicReady] = useState(false);
+  const rsvpStatusKey = `rsvp_status:${guest.key}`;
 
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem("rsvp_status");
-    if (saved === "confirmed" || saved === "declined") {
-      setRsvpStatus(saved);
-    }
   }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    try {
+      const saved = localStorage.getItem(rsvpStatusKey);
+      setRsvpStatus(saved === "confirmed" || saved === "declined" ? saved : "pending");
+    } catch {
+      setRsvpStatus("pending");
+    }
+    setRsvpStatusGuestKey(guest.key);
+    setTransformActive(false);
+  }, [guest.key, mounted, rsvpStatusKey]);
 
   // An toàn: nhạc chỉ là phần phụ. Nếu YouTube bị chặn/chậm và không prime kịp,
   // vẫn cho vào trải nghiệm sau 3.5s thay vì kẹt màn loading vĩnh viễn.
@@ -413,11 +423,12 @@ function HomeContent() {
 
   const handleRsvpComplete = useCallback((status: RsvpStatus) => {
     setRsvpStatus(status);
-    localStorage.setItem("rsvp_status", status);
+    setRsvpStatusGuestKey(guest.key);
+    localStorage.setItem(rsvpStatusKey, status);
     if (status === "confirmed") {
       setTransformActive(true);
     }
-  }, []);
+  }, [guest.key, rsvpStatusKey]);
 
   const handleLoadingReady = useCallback(() => {
     setVisualReady(true);
@@ -425,6 +436,7 @@ function HomeContent() {
 
   const visualProgress = SCENE_PROGRESS[sceneIndex];
   const canStartExperience = !loadingVisible && musicReady;
+  const effectiveRsvpStatus = rsvpStatusGuestKey === guest.key ? rsvpStatus : "pending";
 
   const handleMusicReadyChange = useCallback((ready: boolean) => {
     setMusicReady(ready);
@@ -490,7 +502,7 @@ function HomeContent() {
             settlingTimerRef.current = null;
           }, target === 3 ? 780 : 420);
         }
-      }, isSunburst ? 600 : isBubbleSurge ? 720 : 250);
+      }, isSunburst ? 700 : isBubbleSurge ? 720 : 250);
 
       window.setTimeout(() => {
         setTransitioning(false);
@@ -561,11 +573,11 @@ function HomeContent() {
       case 1:
         return <Scene2MidWater guest={guest} scrollProgress={visualProgress} />;
       case 2:
-        return <Scene3Surface scrollProgress={visualProgress} guest={guest} rsvpConfirmed={rsvpStatus === "confirmed"} deferCreatureMount={transitioning || settlingScene === 2} />;
+        return <Scene3Surface scrollProgress={visualProgress} guest={guest} rsvpConfirmed={effectiveRsvpStatus === "confirmed"} deferCreatureMount={transitioning || settlingScene === 2} />;
       default:
-        return <Scene4Horizon guest={guest} onRsvpComplete={handleRsvpComplete} rsvpDone={rsvpStatus === "confirmed" && !transformActive} transitionSettling={transitioning || settlingScene === 3} />;
+        return <Scene4Horizon guest={guest} onRsvpComplete={handleRsvpComplete} rsvpDone={effectiveRsvpStatus === "confirmed" && !transformActive} transitionSettling={transitioning || settlingScene === 3} />;
     }
-  }, [guest, sceneIndex, visualProgress, rsvpStatus, handleRsvpComplete, transformActive, transitioning, settlingScene, experienceStarted]);
+  }, [guest, sceneIndex, visualProgress, effectiveRsvpStatus, handleRsvpComplete, transformActive, transitioning, settlingScene, experienceStarted]);
 
   if (!mounted) return null;
 
@@ -628,7 +640,7 @@ function HomeContent() {
           </button>
 
           <AnimatePresence>
-            {rsvpStatus === "confirmed" && (
+            {effectiveRsvpStatus === "confirmed" && (
               <motion.div
                 className="nav-creature-companion"
                 initial={{ opacity: 0, x: 20, scale: 0 }}

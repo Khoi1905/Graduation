@@ -4,7 +4,7 @@
 
 Website thiệp mời tốt nghiệp dạng scroll-based, concept "hành trình từ đáy biển nổi lên mặt nước". User cuộn trang từ đáy đại dương tối sâu → vùng nước giữa → gần mặt biển → bãi biển/trời. Mỗi khách mời có URL riêng (ví dụ `?n=minh`) với lời nhắn cá nhân hóa và sinh vật biển đại diện.
 
-**Ngày tốt nghiệp:** Chủ nhật 05/07/2026, 08:00 sáng, Hội trường Nguyễn Văn Đạo, 144 Xuân Thủy, Cầu Giấy, Hà Nội (UET - ĐHQGHN).
+**Ngày tốt nghiệp:** Chủ nhật 05/07/2026, 14h30 chiều, Hội trường Nguyễn Văn Đạo, 144 Xuân Thủy, Cầu Giấy, Hà Nội (UET - ĐHQGHN).
 
 **Tác giả:** Trần Đức Đăng Khôi — sinh viên AI tại UET.
 
@@ -39,6 +39,7 @@ Website thiệp mời tốt nghiệp dạng scroll-based, concept "hành trình 
 Container chính: `<div style={{ height: "450vh" }}>` chứa 4 section, Three.js canvas fixed phía sau.
 
 ### Scene 1 — Đáy biển tối (Deep Sea)
+
 - `h-[100vh]`, màu nền canvas deep blue (#0a1628)
 - TypeWriter effect: "Gửi {tên}," → rồi subtext
 - Vignette effect mạnh, spotlight glow
@@ -46,6 +47,7 @@ Container chính: `<div style={{ height: "450vh" }}>` chứa 4 section, Three.js
 - Opacity fade out khi scroll > 18%
 
 ### Scene 2 — Vùng nước giữa (Mid Water)
+
 - `min-h-[120vh]`, canvas chuyển từ night → mid blue
 - 3 đoạn văn thơ (hoặc lời nhắn cá nhân từ guest.msg)
 - 5 con cá SVG bơi qua lại (fish-swim-right / fish-swim-left)
@@ -53,6 +55,7 @@ Container chính: `<div style={{ height: "450vh" }}>` chứa 4 section, Three.js
 - Gradient chuyển cảnh top (Scene 1→2) và bottom (Scene 2→3)
 
 ### Scene 3 — Gần mặt biển (Surface)
+
 - `min-h-[130vh]`, canvas chuyển từ mid → sand
 - **WaterSurface**: gợn sóng SVG ở top, animation wave-move
 - **SunRays**: 7 tia sáng god rays + 7 caustic shimmer spots
@@ -63,6 +66,7 @@ Container chính: `<div style={{ height: "450vh" }}>` chứa 4 section, Three.js
 - Bottom gradient: sandy tone rgba(196,168,130) fade to transparent
 
 ### Scene 4 — Bãi biển / Trời (Horizon)
+
 - `min-h-[100vh]`, canvas chuyển từ sand → cream
 - **Top blend gradient**: rgba(196,168,130,0.6) → transparent, h-32, -top-4 — che ranh giới Scene 3→4
 - **SunSVG**: mặt trời radial gradient + pulse animation
@@ -85,23 +89,28 @@ Container chính: `<div style={{ height: "450vh" }}>` chứa 4 section, Three.js
 ## Three.js Background System
 
 ### OceanCanvas (fixed, z-0)
+
 Canvas React Three Fiber, camera [0,0,5] fov 60.
 
 ### OceanScene
+
 - `lerpOceanColor(scrollProgress)` → set `scene.background`
 - 5 color stops: deep(0) → night(0.25) → mid(0.5) → sand(0.75) → cream(1.0)
 - AmbientLight: intensity tăng theo scroll + flicker nhẹ ở depth
 - PointLight: intensity tăng theo scroll, color #88ccee
 
 ### Bubbles
+
 - 45 bubbles (InstancedMesh spheres) bay lên + wobble
 - 180 plankton (Points, ShaderMaterial, AdditiveBlending) — particle glow xanh/cyan
 
 ### LightRays
+
 - 5 tia sáng (PlaneGeometry + ShaderMaterial) — chỉ hiện khi scroll > 15%
 - Fade in từ scroll 20%, sway theo time
 
 ### WaveMesh
+
 - PlaneGeometry 80x40 segments, ShaderMaterial
 - Wave displacement + caustic pattern
 - Chỉ hiện khi scroll > 60%, fade in từ 65%
@@ -111,6 +120,7 @@ Canvas React Three Fiber, camera [0,0,5] fov 60.
 ## SVG Art System
 
 ### SeaCreatures.tsx
+
 - `CreatureSVG` dispatcher component: nhận `creature: CreatureType` + `size`
 - 8 specific SVG: ClownfishSVG, TurtleSVG, JellyfishSVG, CrabSVG, OctopusSVG, SeahorseSVG, DolphinSVG, StarfishSVG
 - `GenericFishSVG` cho các type còn lại (pufferfish, whale, shrimp, ray) — customizable colors
@@ -118,6 +128,7 @@ Canvas React Three Fiber, camera [0,0,5] fov 60.
 - `CREATURE_COLORS` map cho 12 types
 
 ### Seaweed3D.tsx
+
 - `SeaweedCluster`: multi-blade seaweed, gradient, drop shadow, leaf frills
 - `CoralBranch`: nhánh san hô phân nhánh, đầu tròn
 - Cả hai dùng `useId()` cho unique SVG IDs
@@ -127,17 +138,20 @@ Canvas React Three Fiber, camera [0,0,5] fov 60.
 ## Guest System
 
 ### data/guests.json
+
 ```json
 {
   "default": { "display": "Bạn", "pronoun": "bạn", "creature": "clownfish", ... },
   "minh": { "display": "Minh", "pronoun": "bạn", "creature": "turtle", ... }
 }
 ```
+
 - Mỗi guest: display, pronoun (bạn/anh/chị/em), msg (custom hoặc null→default), music, creature, creatureMsg, avatar
 - URL param `?n=key` → useGuest() hook → lookup từ JSON
 - **Cần thêm ~22-30 khách mời nữa** (chưa làm)
 
 ### CreatureType (12 loại)
+
 clownfish, turtle, jellyfish, seahorse, crab, octopus, dolphin, starfish, pufferfish, whale, shrimp, ray
 
 ---
@@ -158,22 +172,22 @@ Lazy init via `getSupabase()` — chỉ tạo client khi cần.
 
 ## CSS Animations (globals.css)
 
-| Animation | Mô tả | Duration |
-|-----------|--------|----------|
-| seaweed-sway | Rong biển lắc lư rotate ±3deg | 4s |
-| fish-swim-right/left | Cá bơi qua màn hình | 18s |
-| fish-bob | Cá nhấp nhô dọc | - |
-| creature-drift | Sinh vật trôi nhẹ XY | 8s |
-| dive-down | RSVP confirm: sinh vật lặn xuống | 2s forwards |
-| sun-pulse | Mặt trời nhấp nháy opacity | 4s |
-| wave-move | Sóng mặt biển dịch ngang | 8s |
-| cloud-drift | Mây trôi translateX 0→100vw | 30s |
-| wind-streak | Vệt gió chạy ngang | 5s |
-| sun-ray-sway | Tia nắng Scene 3 nhấp nháy + scale | 5s |
-| caustic-shimmer | Đốm ánh sáng caustic nhấp nháy | 4s |
-| shore-wave-lap | Sóng bờ biển lắc qua lại | 6/8/10s |
-| shore-foam | Bọt sóng shimmer | 6s |
-| bubble-rise | Bong bóng bay lên (RSVP) | - |
+| Animation            | Mô tả                              | Duration    |
+| -------------------- | ---------------------------------- | ----------- |
+| seaweed-sway         | Rong biển lắc lư rotate ±3deg      | 4s          |
+| fish-swim-right/left | Cá bơi qua màn hình                | 18s         |
+| fish-bob             | Cá nhấp nhô dọc                    | -           |
+| creature-drift       | Sinh vật trôi nhẹ XY               | 8s          |
+| dive-down            | RSVP confirm: sinh vật lặn xuống   | 2s forwards |
+| sun-pulse            | Mặt trời nhấp nháy opacity         | 4s          |
+| wave-move            | Sóng mặt biển dịch ngang           | 8s          |
+| cloud-drift          | Mây trôi translateX 0→100vw        | 30s         |
+| wind-streak          | Vệt gió chạy ngang                 | 5s          |
+| sun-ray-sway         | Tia nắng Scene 3 nhấp nháy + scale | 5s          |
+| caustic-shimmer      | Đốm ánh sáng caustic nhấp nháy     | 4s          |
+| shore-wave-lap       | Sóng bờ biển lắc qua lại           | 6/8/10s     |
+| shore-foam           | Bọt sóng shimmer                   | 6s          |
+| bubble-rise          | Bong bóng bay lên (RSVP)           | -           |
 
 ---
 

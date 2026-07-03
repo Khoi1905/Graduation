@@ -21,13 +21,23 @@ type TransformPhase = "warmReveal" | "reading" | "dive";
 function WarmRays() {
   return (
     <div className="transform-rays transform-rays-warm" aria-hidden="true">
-      {Array.from({ length: 7 }, (_, index) => (
+      {Array.from({ length: 9 }, (_, index) => (
         <span
           key={index}
           className="transform-ray transform-ray-warm"
           style={{ "--ray-i": index } as CSSProperties}
         />
       ))}
+    </div>
+  );
+}
+
+function ColorAurora() {
+  return (
+    <div className="transform-color-aurora" aria-hidden="true">
+      <span className="transform-color-aurora-a" />
+      <span className="transform-color-aurora-b" />
+      <span className="transform-color-aurora-c" />
     </div>
   );
 }
@@ -105,7 +115,7 @@ export default function TransformationOverlay({
 
   useEffect(() => {
     if (!active || phase !== "dive") return;
-    const timer = window.setTimeout(onComplete, 1700);
+    const timer = window.setTimeout(onComplete, 1850);
     return () => window.clearTimeout(timer);
   }, [active, phase, onComplete]);
 
@@ -118,11 +128,11 @@ export default function TransformationOverlay({
   const isDive = phase === "dive";
   const creatureMotion = isDive
     ? {
-        x: ["0vw", "7vw", "14vw"],
-        y: ["0vh", "-15vh", "43vh"],
-        scale: [1, 1.12, 0.42],
-        rotate: [0, 8, 22],
-        opacity: [1, 1, 0],
+        x: ["0vw", "2vw", "8vw", "14vw"],
+        y: ["0vh", "-8vh", "12vh", "52vh"],
+        scale: [1, 1.08, 0.78, 0.34],
+        rotate: [0, 4, 14, 24],
+        opacity: [1, 1, 0.86, 0],
       }
     : {
         x: "0vw",
@@ -146,6 +156,7 @@ export default function TransformationOverlay({
             <AboveWaterScenery />
           </div>
           <div className="transform-warm-veil" aria-hidden="true" />
+          <ColorAurora />
           <WarmRays />
           <WarmMotes />
 
@@ -156,10 +167,12 @@ export default function TransformationOverlay({
               animate={creatureMotion}
               transition={
                 isDive
-                  ? { duration: 1.35, ease: [0.28, 0.66, 0.24, 1] }
+                  ? { duration: 1.55, ease: [0.22, 0.74, 0.24, 1] }
                   : { duration: 0.85, ease: "easeOut" }
               }
             >
+              <div className="transform-creature-color-ring transform-creature-color-ring-a" />
+              <div className="transform-creature-color-ring transform-creature-color-ring-b" />
               <div className="transform-creature-glow" />
               <CreatureSprite creature={creature} size={132} className="transform-creature-sprite" />
             </motion.div>
