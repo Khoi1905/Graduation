@@ -8,13 +8,13 @@
     "creatureMsg": "Với mình, bạn giống một chú cá hề — luôn mang lại tiếng cười cho mọi người xung quanh.",
     "avatar": null
   },
-  "minh": {
-    "display": "Minh",
+  "khánh": {
+    "display": "Bùi Khánh",
     "pronoun": "bạn",
-    "msg": "4 năm qua có mày, đoạn đường nào cũng thấy ngắn hơn. Cảm ơn mày, Minh.",
+    "msg": "test lần 1",
     "music": null,
-    "creature": "turtle",
-    "creatureMsg": "Với tao, mày giống một chú rùa biển — chậm rãi nhưng chắc chắn, luôn tìm được đường về nhà.",
+    "creature": "starfish",
+    "creatureMsg": "Từ vì sao? Thành vì sao!!",
     "avatar": null
   }
 }
