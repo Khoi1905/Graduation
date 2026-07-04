@@ -215,6 +215,15 @@
     "creatureMsg": "Ninh thì giống một chú cua - chắc chắn, thẳng thắn, và luôn có phong cách, ngoài ra thì cũng ngang như cua.",
     "avatar": null
   },
+  "huong-giang": {
+    "display": "Hương Giang",
+    "pronoun": "em",
+    "msg": "Thì cũm không biết phải nói gì nhiều. May mắn vì được đồng hành với em trong một hành trình. Rất quý Giang ở nhiều phương diện, ngoài việc đ chịu học hàm loga, xstk, pt mũ, lượng giác ... và ti tỉ thứ nữa ra thì cái gì cũm oke hâh\n\nChúc mừng em với kết quả đạt được trong kỳ thi vừa rồi, dù chưa phải là tốt nhất, nhưng chắc chắn là đã nỗ lực nhất, đây là một kết quả ổn để em tiếp bước vào con đường đại học cũng như để thực hiện các ước mơ của em sau này.\n\nCứ mãi luôn vui vẻ, chăm chỉ, định hướng lại con đường của bản thân, rồi thành công sẽ tìm đến em./n/nChúc mừng em tốt nghiệp cấp 3 =)))",  
+    "music": null,
+    "creature": "crab",
+    "creatureMsg": "Cho em thành con cua nhé, ngang như cua mà",
+    "avatar": null
+  },
   "tung-anh": {
     "display": "Tùng Anh",
     "pronoun": "bạn",
@@ -317,7 +326,7 @@
   "kieu-anh": {
     "display": "Kiều Anh",
     "pronoun": "chị",
-    "msg": "Chị Kiều Anh là một người chị rất đặc biệt ở câu lạc bộ: xinh gái, độc lập, giỏi giang, giàu theo đúng nghĩa vừa tự chủ vừa có khí chất, nhưng điều em nhớ nhất vẫn là cách chị quan tâm các em. Ở chị có cảm giác của một người chị cả, không cần nói quá nhiều nhưng vẫn khiến mọi người thấy được che chở và được để ý.\n\nEm luôn quý cách chị sống rất rõ ràng, tự tin và có thế giới riêng, nhưng vẫn mềm ở những chỗ cần mềm. Những lần chị hỏi han, để ý hay đứng ra lo cho các em làm em thấy CLB không chỉ là nơi làm việc cùng nhau, mà còn là nơi có những người chị thật sự đáng tin.\n\nCảm ơn chị vì đã là một người chị cả xinh đẹp, độc lập và ấm áp như vậy. Hẹn gặp chị hôm tốt nghiệp nhé.",
+    "msg": "Chị Kiều Anh là một người chị rất đặc biệt ở câu lạc bộ: xinh gái, độc lập, giỏi giang, giàu theo đúng nghĩa vừa tự chủ vừa có khí chất, nhưng điều em nhớ nhất vẫn là cách chị quan tâm các em. Ở chị có cảm giác của một người chị cả, không cần nói quá nhiều nhưng vẫn khiến mọi người thấy được che chở và được để ý, thỉnh thoảng có cả sấy nữa...\n\nEm luôn quý cách chị sống rất rõ ràng, tự tin và có thế giới riêng, nhưng vẫn mềm ở những chỗ cần mềm.\n\nCảm ơn chị vì đã là chị của bọn em./n/nNếu chị sắp xếp được, mong được gặp chị hôm tốt nghiệp nhé.", 
     "music": null,
     "creature": "whale",
     "creatureMsg": "Chị giống một chú cá voi - lớn lao, bình tĩnh, bao dung và luôn mang theo một cảm giác rất vững chãi giữa đại dương.",
