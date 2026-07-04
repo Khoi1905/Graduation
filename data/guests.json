@@ -326,10 +326,19 @@
   "kieu-anh": {
     "display": "Kiều Anh",
     "pronoun": "chị",
-    "msg": "Chị Kiều Anh là một người chị rất đặc biệt ở câu lạc bộ: xinh gái, độc lập, giỏi giang, giàu theo đúng nghĩa vừa tự chủ vừa có khí chất, nhưng điều em nhớ nhất vẫn là cách chị quan tâm các em. Ở chị có cảm giác của một người chị cả, không cần nói quá nhiều nhưng vẫn khiến mọi người thấy được che chở và được để ý, thỉnh thoảng có cả sấy nữa...\n\nEm luôn quý cách chị sống rất rõ ràng, tự tin và có thế giới riêng, nhưng vẫn mềm ở những chỗ cần mềm.\n\nCảm ơn chị vì đã là chị của bọn em./n/nNếu chị sắp xếp được, mong được gặp chị hôm tốt nghiệp nhé.", 
+    "msg": "Chị Kiều Anh là một người chị rất đặc biệt ở câu lạc bộ: xinh gái, độc lập, giỏi giang, giàu theo đúng nghĩa vừa tự chủ vừa có khí chất, nhưng điều em nhớ nhất vẫn là cách chị quan tâm các em. Ở chị có cảm giác của một người chị cả, không cần nói quá nhiều nhưng vẫn khiến mọi người thấy được che chở và được để ý, thỉnh thoảng có cả sấy nữa...\n\nEm luôn quý cách chị sống rất rõ ràng, tự tin và có thế giới riêng, nhưng vẫn mềm ở những chỗ cần mềm.\n\nCảm ơn chị vì đã là chị của bọn em.\n\nNếu chị sắp xếp được, mong được gặp chị hôm tốt nghiệp nhé.", 
     "music": null,
     "creature": "whale",
     "creatureMsg": "Chị giống một chú cá voi - lớn lao, bình tĩnh, bao dung và luôn mang theo một cảm giác rất vững chãi giữa đại dương.",
+    "avatar": null
+  },
+  "dinh-hang": {
+    "display": "Đinh Hằng",
+    "pronoun": "bạn",
+    "msg": "Đinh Hằng là một trong số ít những người bạn từ cấp 2 mà đến tận bây giờ mình vẫn còn giữ liên lạc. Dù về sau ít khi gặp nhau hơn, mỗi người có một nhịp sống và một hướng đi riêng, mình vẫn luôn thấy quý vì giữa rất nhiều mối quan hệ cũ, vẫn còn có một người bạn như Hằng ở lại theo một cách rất tự nhiên.\n\nTrong mắt mình, Hằng là một người xinh, giỏi, có mục tiêu và có định hướng. Có thể giai đoạn này vẫn còn nhiều mông lung, nhiều lúc chưa biết mọi thứ sẽ đi về đâu, nhưng mình tin đó chỉ là một đoạn nước hơi đục trước khi mọi thứ rõ hơn. Với sự cố gắng và cách Hằng luôn muốn đi về phía tốt hơn, rồi mọi chuyện sẽ ổn thôi.\n\nCảm ơn Hằng vì vẫn là một người bạn mà mình có thể giữ liên lạc sau ngần ấy thời gian. Mong bạn đi qua giai đoạn này nhẹ nhàng hơn, và hẹn gặp bạn trong ngày tốt nghiệp của mình nhé.",
+    "music": null,
+    "creature": "angelfish",
+    "creatureMsg": "Bạn giống một chú cá thiên thần - xinh, sáng, mềm mại nhưng vẫn có hướng bơi rất riêng giữa đại dương.",
     "avatar": null
   }
 }
